@@ -1,0 +1,33 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin tel {
+    @media (min-width: v.$tel) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin clip-text($maxLines, $orient: vertical) {
+    display: -webkit-box;
+    -webkit-line-clamp: $maxLines;
+    -webkit-box-orient: $orient;
+    overflow: hidden;
+}
