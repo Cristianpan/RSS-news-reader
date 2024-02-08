@@ -16,7 +16,5 @@
         </div>
     </nav>
     
-    <script src="<?= base_url()?>/assets/js/navbar.min.js"></script>
-    
 </header>
 
