@@ -1,2 +1,99 @@
 @use '../base/variables' as *; 
 @use '../base/mixins' as *; 
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 6.8rem;
+    padding: 3rem 1rem;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 1;
+    box-shadow: 0.1rem .6rem .8rem rgba(131, 131, 131, 0.1); 
+
+    #check{
+        display: none;
+    }
+    .nav {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        font-family: system-ui;
+        background: #f2f2f2;
+        left: -100%;
+        top: 6.8rem;
+        transition: all 0.5s ease;
+ 
+        &__links{
+            display: flex;
+            flex-direction: column;
+        }
+        
+        &__link{
+            font-size: 2.1rem;
+            margin: 5% 8%;
+            color: $dark;
+            transition: all 0.2s ease-out;
+            display: inline-block;
+        }
+
+        &__link:hover{
+            color: $blue;
+            transform: scale(1.01);
+        } 
+    }
+    
+    .checkbtn {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        right: 3rem;
+
+        &__img{
+            width: 2.2rem;
+        }
+    }
+    
+    #check:checked ~ .nav { 
+        left: 0;
+        
+    }
+
+    @include tablet {
+        padding: 3rem 5%;
+
+        .nav {
+            left: 0;            
+            display: contents;
+            position: static;
+            font-family: 'Outfit', sans-serif;
+
+            &__links{
+                display: inline;              
+            }
+
+            &__link {
+                font-size: 2.1rem;
+                margin: 0 2rem;
+
+                &--active{
+                    color: $blue;
+                } 
+            }
+
+            &__link:hover{
+                color: $blue;
+                transform: scale(1.02);
+            }
+        }
+
+        .checkbtn{
+            display: none;
+        }
+    }
+}
+
+
