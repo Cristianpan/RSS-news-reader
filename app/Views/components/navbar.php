@@ -1,20 +1,16 @@
 <header class="header">
 
-    <a class="logo" href="#">
-        <img class="logo__imagen" src="/assets/images/img2.svg" alt="logo">
+    <a class="header__logo" href="/">
+        <img class="header__logo-image" src="/assets/images/img2.svg" alt="logo">
     </a>
 
-    <input type="checkbox" name="" id="check">
-    <label for="check" class="checkbtn">
-        <img src="/assets/images/list.svg" alt="menu" class="checkbtn__img">
-    </label>
+    <button class="header__nav-btn" id="header_nav-btn">
+        <img class="header__nav-btn-img" src="/assets/images/list.svg" alt="Botón del menú">
+    </button>
 
     <nav class="nav">
-        <div class="nav__links">
-            <a class="nav__link nav__link--active" href="#">Inicio</a>
-            <a class="nav__link" href="#">Registra Feeds</a>
-        </div>
+        <a class="nav__link nav__link--active" href="/">Inicio</a>
+        <a class="nav__link" href="#">Registra Feeds</a>
     </nav>
-    
-</header>
 
+</header>
