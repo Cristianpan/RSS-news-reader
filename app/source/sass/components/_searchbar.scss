@@ -1,2 +1,71 @@
 @use '../base/variables' as *; 
 @use '../base/mixins' as *; 
+
+.container{
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 120rem;
+
+    @include desktop() {
+        width: 50vw;
+    }
+    
+    @include tablet() {
+        width: 80vw;
+    }
+}
+
+.search-bar{
+   position: relative;
+
+    &__input{
+        width: 100%;
+        background-color: $light-gray;
+        padding: 1.5rem 0 1.5rem 4.5rem;
+        border-radius: 1rem;
+        margin: 0;
+        margin-bottom: 3.5rem;
+    }
+
+    &__button{
+        position: absolute;
+        left: 0.5rem;
+        top: 1rem;
+    }
+
+}
+
+.news-filter{
+    position: relative;
+
+    &__label{
+        position: absolute;
+        left: 1rem;
+        top: 0.5rem;
+        color: $gray;
+        font-size: 1.4rem;
+        pointer-events: none;
+    }
+
+    &__select{
+        padding: 0.5rem 3rem 0.5rem 10.5rem;
+        display: block;
+        appearance: none;
+        border: none;
+        background-color: $light-gray;
+        border-radius: 0.5rem;
+        color: $gray;
+        font-size: 1.4rem;
+
+    }
+
+    &__arrow{
+        position: absolute;
+        top: 0rem;
+        left: 18rem;
+        color: $gray;
+        pointer-events: none;
+    }
+}
+
+
