@@ -5,7 +5,8 @@
     </a>
 
     <button class="header__nav-btn" id="header_nav-btn">
-        <img class="header__nav-btn-img" src="/assets/images/list.svg" alt="Botón del menú">
+        <img class="header__nav-btn-img" id="btn-open" src="/assets/images/list.svg" alt="Botón del menú">
+        <img class="header__nav-btn-img header__nav-btn-img--close header__nav-btn-img--hidden" id="btn-close" src="/assets/images/x-circle.svg" alt="Botón del menú">
     </button>
 
     <nav class="nav">
