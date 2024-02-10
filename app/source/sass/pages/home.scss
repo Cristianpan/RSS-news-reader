@@ -11,85 +11,81 @@
 }
 
 .cards-container{
-    max-width: 90vw;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    gap: 4rem;
-    place-items: center;
-    margin-bottom: 2rem;
-    
-    @include desktop() {
-        width: 65vw;
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto 3rem auto;
+    @include grid(1, 2rem);
+    @include tel() {
+        grid-template-columns: repeat(2, 1fr);
     }
-   
     @include tablet() {
-        max-width: 80vw;
+        width: 75%;
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     }
 }
 
 .news-card{
     width: 100%;
     height: 100%;
-    min-height: 43rem;
-    border-radius: 1rem;
-    box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2), 0 0.6rem 2rem 0 rgba(0, 0, 0, 0.19);
-
+    border-radius: 0.5rem;
+    box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 
     &__image{
         width: 100%;
-        max-height: 21rem;
-        height: 50%;
-        border-radius: 1rem 1rem 0rem 0rem;
+        aspect-ratio: 1 / 0.75;
+        max-height: 18rem;
         overflow: hidden;
-
-        img{
-            width: 100%;
-            height: auto;
-            margin: auto;
-        }
     }
 
     &__info-container{
         width: 100%;
         height: 50%;
-        padding: 2rem 1rem;
-        border-radius: 0rem 0rem 1rem 1rem;
+        padding: 1.5rem 1rem 3rem 1rem;
     }
 
     &__title{
-        width: 100%;
         font-weight: 500;
         font-size: 1.7rem;
     }
 
-    &__link{
-        font-size: 1.4rem;
-        float: right;
-        padding-bottom: 1rem;
-        color: $blue;
-        transition: color 0.5s, transform 0.5s;
+    &__detail{
+        &--date {
+            font-size: 1.4rem;
+        }
 
-        &:hover {
-            color:red;
-          }
+        &--description {
+            font-size: 1.4rem;
+            @include clip-text(4);
+        }
+
+        &--link {
+            font-size: 1.4rem;
+            margin: 1.5rem 1rem;
+            float: right;
+            color: $blue;
+            transition: color 0.3s, transform 0.1s;
+            
+            &:hover {
+                transform: scale(1.05);
+                color: darken($blue, 20);
+            }
+        }
     }
 
-    &__description{
-        font-size: 1.4rem;
-        @include clip-text(4)
+    &__categories-container {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin: 0.5rem 0;
     }
 
-    &__date{
-        font-size: 1.4rem;
-    }
-
-    &__categorie-title{
+    &__category {
         color: $blue;
         display: inline-block;
-        border: 2px solid $blue;
+        border: 1px solid $blue;
         border-radius: 1rem;
-        padding: 0rem 1rem;
-        font-size: 1.1rem;
+        padding: 0rem 0.5rem;
+        font-size: 1rem;
     }
 }

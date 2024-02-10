@@ -25,17 +25,19 @@
                 <?php
                     for ($j = 1; $j <= 2; $j++) {
                 ?>
-                     <p class="news-card__categorie-title">Categoría</p>   
+                     <p class="news-card__category">Categoría</p>   
                  <?php
                     }
                 ?>
                 </div>
-                <p class="news-card__date">12/06/24</p>
-                <p class="news-card__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                tempor incididunt ut labore minim veniam, minim veniam, quis...
-                </p>
-                <a class="news-card__link" href="#">-> Leer Más</a>
+                <div class="news-card__detail">
+                    <p class="news-card__detail--date">12/06/24</p>
+                    <p class="news-card__detail--description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                    tempor incididunt ut labore minim veniam, minim veniam, quis...
+                    </p>
+                    <a class="news-card__detail--link" href="#">-> Leer Más</a>
+                </div>
             </div>
         </div>
     <?php
