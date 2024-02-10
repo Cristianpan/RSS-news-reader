@@ -7,7 +7,7 @@
     <title>Más Noticias</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <?php $this->renderSection('css') ?>
 </head>
@@ -18,6 +18,8 @@
     <?php $this->renderSection('content') ?>
     
     <?php $this->renderSection('js') ?>
+    
+    <script src="/assets/js/navbar.min.js"></script>
 </body>
 
 </html>
