@@ -7,41 +7,40 @@
 
 <?php $this->section('content') ?>
 
-<h1 class="title">Busca entre tus sitios favoritos</h1>
+<h1 class="home-title">Busca entre tus sitios favoritos</h1>
 
 <?= view('components/searchbar')?>
 
-
-<div class="cards--container">
+<article class="cards-container">
     <?php
         for ($i = 1; $i <= 5; $i++) {
     ?>
-        <div class="card">
-            <div class="card__image">
+        <div class="news-card">
+            <div class="news-card__image">
                 <img src="/assets/images/flores.jpg">
             </div>
-            <div class="card__info">
-                <h1 class="card__info__title">Este es el título de la noticia</h1>
-                <div class="card__info__categorie">
+            <div class="news-card__info-container">
+                <h1 class="news-card__title">Este es el título de la noticia</h1>
+                <div class="news-card__categories-container">
                 <?php
                     for ($j = 1; $j <= 2; $j++) {
                 ?>
-                     <p class="card__info__categorie__title">Categoría</p>   
+                     <p class="news-card__categorie-title">Categoría</p>   
                  <?php
                     }
                 ?>
                 </div>
-                <p class="card__info__date content--size">12/06/24</p>
-                <p class="card__info__description content--size">
+                <p class="news-card__date">12/06/24</p>
+                <p class="news-card__description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
                 tempor incididunt ut labore minim veniam, minim veniam, quis...
                 </p>
-                <a class="card__info__link content--size" href="#">-> Leer Más</a>
+                <a class="news-card__link" href="#">-> Leer Más</a>
             </div>
         </div>
     <?php
         }
     ?>
-</div>
+</article>
 
 <?php $this->endSection() ?>
