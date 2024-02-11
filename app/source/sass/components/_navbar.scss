@@ -1,2 +1,86 @@
 @use '../base/variables' as *; 
 @use '../base/mixins' as *; 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    height: 6.8rem;
+    padding: 2rem 1rem;
+    z-index: 1;
+    box-shadow: 0.1rem .6rem .8rem rgba(131, 131, 131, 0.1);
+    position: sticky;
+    top: 0;
+    @include tablet(){
+        padding: 2rem 4rem;
+    }
+    &__logo {
+        max-width: 18rem;
+        display: block;
+        height: auto;
+        @include tablet(){
+            max-width: 20rem;
+        }
+    }
+    &__nav-btn {  
+        padding: 0; 
+        cursor: pointer;     
+        @include tablet {
+            display: none;
+        }
+    }
+    
+    &__nav-btn-img {
+        width: 3.5em;
+        height: 3.5rem;
+        opacity: 1;
+        transition: opacity 0.3s;
+        &--hidden {
+            visibility: hidden;
+            position: absolute;
+            opacity: 0;
+        }
+    }
+}
+.nav { 
+    display: flex;
+    position: fixed;
+    right: -100%;
+    gap: 3rem;
+    padding: 3rem;
+    transition: right 0.3s ease-in-out;
+    
+    @include tablet(){
+        display: flex;
+        margin-right: 1.5rem;
+        padding: 0;
+        gap: 4rem;
+        position: static;
+    }
+    &--mobile {
+        flex-direction: column;
+        position: fixed;
+        right: -100%;
+        top: 6.8rem;
+        width: 100%;
+        height: calc(100vh - 6.8rem);
+    }
+    
+    &--mobile-active {
+        right: 0;
+        background: $light-gray;
+    }
+    &__link {
+        color: $dark; 
+        transition: color 0.3s, transform 0.3s;
+        font-weight: 600;
+        text-align: right;
+        &--active {
+            color: $blue;
+        }
+        &:hover {
+            color: $blue;
+            transform: scale(1.01);
+        }
+    }
+}
