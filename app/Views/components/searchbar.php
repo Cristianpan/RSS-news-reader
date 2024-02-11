@@ -8,16 +8,12 @@
         </form>
     </div>
     <div class="news-filter">
-            <label for="" class="news-filter__label">Ordenar por:</label>
-            <select name="news-filter__select" id="news-filter__select" class="news-filter__select">
-                <option value="fecha">Fecha</option>
-                <option value="titulo">Título</option>
-                <option value="categoria">Categoría</option>
-            </select>
-            <div class="news-filter__arrow">
-                <span class="material-symbols-outlined">
-                    arrow_drop_down
-                </span>
-            </div>
-        </div>
+        <select name="news-filter__select" id="news-filter__select" class="news-filter__select">
+            <option value="fecha" selected>Fecha</option>
+            <option value="titulo">Título</option>
+            <option value="categoria">Categoría</option>
+        </select>
+        <img src="/assets/images/down-arrow-icon.svg" alt="" class="news-filter__arrow">
+    </div>
+        
 </div>
