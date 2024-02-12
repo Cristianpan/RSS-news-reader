@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     for (let i = 0; i < options.length; i++) {
         if (options[i].hasAttribute('selected')) {
-            options[i].textContent = `Ordenado por: ${options[i].textContent}`;
+            options[i].textContent = `Ordenar por: ${options[i].textContent}`;
         }
     }
 });
@@ -14,11 +14,8 @@ selectElement.addEventListener('change', function() {
     const selectedOption = this.options[this.selectedIndex];
     const selectedText = selectedOption.textContent;
     
-    selectedOption.textContent = `Ordenar por: ${selectedText}`;
-
     for (let i = 0; i < this.options.length; i++) {
-        if(this.options[i] !== selectedOption){
-            this.options[i].textContent = this.options[i].textContent.replace("Ordenado por:", "");
-        }
+        this.options[i].textContent = this.options[i].textContent.replace("Ordenar por: ", "")
     }
+    selectedOption.textContent = `Ordenar por: ${selectedText}`;
 });
