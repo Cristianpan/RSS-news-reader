@@ -1,13 +1,13 @@
 const selectElement = document.getElementById('news-filter__select');
 
 document.addEventListener('DOMContentLoaded', function() {
-    const options = Array.from(selectElement.options);
+    const options = selectElement.options;
     
-    options.forEach(option => {
-        if(option.selected){
-            option.textContent = 'Ordenar por: ' + option.textContent;
+    for (let i = 0; i < options.length; i++) {
+        if (options[i].hasAttribute('selected')) {
+            options[i].textContent = `Ordenado por: ${options[i].textContent}`;
         }
-    });
+    }
 });
 
 selectElement.addEventListener('change', function() {
@@ -16,10 +16,9 @@ selectElement.addEventListener('change', function() {
     
     selectedOption.textContent = `Ordenar por: ${selectedText}`;
 
-    Array.from(this.options).
-        forEach(option => {  
-            if (option !== selectedOption){  
-                option.textContent = option.textContent.replace('Ordenado por:', ""); 
-            }  
-    });
+    for (let i = 0; i < this.options.length; i++) {
+        if(this.options[i] !== selectedOption){
+            this.options[i].textContent = this.options[i].textContent.replace("Ordenado por:", "");
+        }
+    }
 });
