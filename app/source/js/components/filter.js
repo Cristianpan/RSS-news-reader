@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     options.forEach(option => {
         if(option.selected){
-            option.textContent = 'Ordenado por: ' + option.textContent;
+            option.textContent = 'Ordenar por: ' + option.textContent;
         }
     });
 });
@@ -14,7 +14,7 @@ selectElement.addEventListener('change', function() {
     const selectedOption = this.options[this.selectedIndex];
     const selectedText = selectedOption.textContent;
     
-    selectedOption.textContent = `Ordenado por: ${selectedText}`;
+    selectedOption.textContent = `Ordenar por: ${selectedText}`;
 
     Array.from(this.options).
         forEach(option => {  
@@ -23,10 +23,3 @@ selectElement.addEventListener('change', function() {
             }  
     });
 });
-
-
-
-
-
-
-
