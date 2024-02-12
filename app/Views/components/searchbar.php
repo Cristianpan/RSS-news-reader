@@ -1,12 +1,10 @@
 <div class="container">
-    <div class="search-bar">
-        <form action="#" method="get" class="search-bar__form">
-            <input type="text" placeholder="Ingresa el título, nombre de la página o categoría" class="search-bar__input">
-            <button type="submit" class="search-bar__button">
-                <img src="/assets/images/search-icon.svg" alt="">
-            </button>
-        </form>
-    </div>
+    <form action="#" method="get" class="search-bar">
+        <input type="search" placeholder="Ingresa el título, nombre de la página o categoría" class="search-bar__input">
+        <button type="submit" class="search-bar__button">
+            <img src="/assets/images/search-icon.svg" alt="">
+        </button>
+    </form>
     <div class="news-filter">
         <select name="news-filter__select" id="news-filter__select" class="news-filter__select">
             <option value="fecha" selected>Fecha</option>
@@ -15,5 +13,5 @@
         </select>
         <img src="/assets/images/down-arrow-icon.svg" alt="" class="news-filter__arrow">
     </div>
-        
+
 </div>

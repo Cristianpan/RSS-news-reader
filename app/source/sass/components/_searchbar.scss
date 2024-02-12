@@ -2,39 +2,43 @@
 @use '../base/mixins' as *; 
 
 .container{
-    width: 90vw;
-    margin: 0 auto 3rem auto;
-    max-width: 120rem;
-
-    @include desktop() {
-        width: 50vw;
-    }
-    
-    @include tablet() {
-        width: 80vw;
-    }
+    margin: 0 auto 2rem auto;
+    @include container; 
 }
 
 .search-bar{
-   position: relative;
+    position: relative;
+    height: 4rem;
+    margin-bottom: 3rem;
+ 
+     &__input{
+         width: 100%;
+         height: 100%;
+         background-color: $light-gray;
+         padding: 1.5rem 1rem 1.5rem 4.5rem;
+         border-radius: 1rem;
 
-    &__input{
-        width: 100%;
-        background-color: $light-gray;
-        padding: 1.5rem 1rem 1.5rem 4.5rem;
-        border-radius: 1rem;
-        margin: 0;
-        margin-bottom: 3.5rem;
-    }
+        &:focus {
+            border: 2px solid rgba($blue, 0.75);
+        }
 
-    &__button{
-        position: absolute;
-        left: 0.5rem;
-        top: 1rem;
-    }
+        &::placeholder {
+            color: $gray; 
+        }
 
-}
-
+        &::-webkit-search-clear-button, &::-webkit-search-cancel-button{
+            appearance: none;
+        }
+     }
+ 
+     &__button{
+         position: absolute;
+         left: 0.5rem;
+         top: 0;
+         bottom: 0;
+     }
+ 
+ }
 .news-filter{
     display: inline-block;
     position: relative;
@@ -50,15 +54,20 @@
         background-color: $light-gray;
         color: $gray;
         font-size: 1.4rem;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline-color: rgba($blue, 0.75);
+        }
     }
 
     &__arrow{
         position: absolute;
-        top: 1.1rem;
+        top: 1rem; 
         right: 0.6rem;
         color: $gray;
         pointer-events: none;
-        width: 0.6rem;
+        width: 1rem;
     }
 }
 

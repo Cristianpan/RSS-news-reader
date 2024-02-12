@@ -25,6 +25,15 @@
     grid-template-columns: repeat($columnas, 1fr);
 }
 
+@mixin container(){
+    width: 90%;
+    max-width: 120rem;
+
+    @include tablet {
+        width: 75%;
+    }
+}
+
 @mixin clip-text($maxLines, $orient: vertical) {
     display: -webkit-box;
     -webkit-line-clamp: $maxLines;
