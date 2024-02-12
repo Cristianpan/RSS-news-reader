@@ -46,3 +46,7 @@
 </article>
 
 <?php $this->endSection() ?>
+
+<?php $this->section('js') ?>
+<script src="/assets/js/searchbar.min.js"></script>
+<?php $this->endSection('js') ?>
