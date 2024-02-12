@@ -1,25 +1,32 @@
 const selectElement = document.getElementById('news-filter__select');
 
 document.addEventListener('DOMContentLoaded', function() {
-    var options = selectElement.options;
-
-    for (var i = 0; i < options.length; i++) {
-        if (options[i].hasAttribute('selected')) {
-            options[i].textContent = `Ordenado por: ${options[i].textContent}`;
+    const options = Array.from(selectElement.options);
+    
+    options.forEach(option => {
+        if(option.selected){
+            option.textContent = 'Ordenado por: ' + option.textContent;
         }
-    }
+    });
 });
 
 selectElement.addEventListener('change', function() {
     const selectedOption = this.options[this.selectedIndex];
     const selectedText = selectedOption.textContent;
-
+    
     selectedOption.textContent = `Ordenado por: ${selectedText}`;
 
-    for (let i = 0; i < this.options.length; i++) {
-        if(this.options[i] !== selectedOption){
-
-            this.options[i].textContent = this.options[i].textContent.replace("Ordenado por:", "");
-        }
-    }
+    Array.from(this.options).
+        forEach(option => {  
+            if (option !== selectedOption){  
+                option.textContent = option.textContent.replace('Ordenado por:', ""); 
+            }  
+    });
 });
+
+
+
+
+
+
+
