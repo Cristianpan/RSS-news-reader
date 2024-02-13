@@ -10,8 +10,8 @@
     </button>
 
     <nav class="nav">
-        <a class="nav__link nav__link--active" href="/">Inicio</a>
-        <a class="nav__link" href="#">Registra Feeds</a>
+        <a class="nav__link nav__link--active" href="<?=url_to('news')?>">Inicio</a>
+        <a class="nav__link" href="<?= url_to('websites') ?>">Registra Feeds</a>
     </nav>
 
 </header>
