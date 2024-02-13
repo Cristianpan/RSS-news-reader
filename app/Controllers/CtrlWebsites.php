@@ -9,6 +9,6 @@ class CtrlWebsites extends BaseController
 {
     public function index()
     {
-        //
+        return view('pages/websites/index'); 
     }
 }
