@@ -1,6 +1,6 @@
 <div class="container">
-    <form action="#" method="get" class="search-bar">
-        <input type="search" placeholder="Ingresa el título, nombre de la página o categoría" class="search-bar__input">
+    <form action="<?= url_to('news') ?>" class="search-bar">
+        <input type="search" name="search" placeholder="Ingresa el título, nombre de la página o categoría" class="search-bar__input">
         <button type="submit" class="search-bar__button">
             <img src="/assets/images/search-icon.svg" alt="">
         </button>
