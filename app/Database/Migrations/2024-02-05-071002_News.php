@@ -38,7 +38,7 @@ class News extends Migration
 
         $this->forge->addKey('id', true); 
         $this->forge->addForeignKey('websiteId', 'websites', 'id', 'CASCADE', 'CASCADE', 'websiteId_new_FK');
-        $this->forge->createTable('news');
+        $this->forge->createTable('news', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()

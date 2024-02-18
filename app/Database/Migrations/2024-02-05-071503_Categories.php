@@ -24,7 +24,7 @@ class Categories extends Migration
 
         $this->forge->addKey('id', true); 
         $this->forge->addForeignKey('newId', 'news', 'id', 'CASCADE', 'CASCADE', 'newId_category_FK');
-        $this->forge->createTable('categories');
+        $this->forge->createTable('categories', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()
