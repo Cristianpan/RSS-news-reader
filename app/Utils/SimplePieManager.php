@@ -43,7 +43,7 @@ class SimplePieManager
         if (!$feed->init()) {
             throw new InvalidWebsiteFeedException();
         }
-
+        
         $website = [
             'name' => $feed->get_title(),
             'url' => $websiteUrl,
@@ -54,14 +54,14 @@ class SimplePieManager
             return [
                 'title' => $item->get_title(),
                 'url' => $item->get_link(),
-                'image' => static::getItemImage($item->get_content()),
+                'icon' => static::getItemImage($item->get_content()),
                 'description' => htmlspecialchars(strip_tags($item->get_description())),
                 'date' => $item->get_date("d/m/Y"),
                 'categories' => array_map(function ($category) {
                     return [
                         'name' => $category->get_term(),
                     ];
-                }, $item->get_categories()),
+                }, $item->get_categories() ?? []),
             ];
         }, $feed->get_items());
     
