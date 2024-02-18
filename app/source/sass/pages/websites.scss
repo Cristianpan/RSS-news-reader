@@ -1,8 +1,10 @@
+@use '../components/alert-response'; 
 @use '../components/global';
 @use '../components/navbar';
 @use '../components/searchbar';
 @use '../base/variables' as *; 
 @use '../base/mixins' as *; 
+
 
 .websites-title {
     text-align: center;
@@ -24,6 +26,12 @@
 
     @include tablet {
         flex-direction: row;
+    }
+
+    &__message {
+        margin-top: -1rem;
+        font-size: 1.4rem;
+        color: $red;
     }
     
     &__input {

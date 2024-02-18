@@ -14,6 +14,6 @@ $routes->post('/', [CtrlNews::class, 'update'], ['as' => 'news-update']);
 
 //websites
 $routes->get('/websites', [CtrlWebsites::class, 'index'], ['as' => 'websites']);
-$routes->post('/websites/create', [CtrlWebsites::class, 'create'], ['as' => 'websites']);
+$routes->post('/websites/create', [CtrlWebsites::class, 'create'], ['as' => 'website-create']);
 $routes->post('/websites/delete/(:segment)', [CtrlWebsites::class, 'delete/$1'], ['as' => 'websites-delete']);
 

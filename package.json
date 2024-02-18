@@ -4,30 +4,32 @@
     "description": "RSS-news-reader",
     "main": "index.js",
     "directories": {
-      "test": "tests"
+        "test": "tests"
     },
     "scripts": {
-      "dev": "concurrently -n php,gulp -c magenta,cyan \"php spark serve\" \"gulp dev\"",
-      "build": "gulp build"
+        "dev": "concurrently -n php,gulp -c magenta,cyan \"php spark serve\" \"gulp dev\"",
+        "build": "gulp build"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
-      "autoprefixer": "^10.4.16",
-      "browser-sync": "^2.29.3",
-      "concurrently": "^8.2.1",
-      "cssnano": "^6.0.1",
-      "del": "^6.1.1",
-      "gulp": "^4.0.2",
-      "gulp-plumber": "^1.2.1",
-      "gulp-postcss": "^9.0.1",
-      "gulp-rename": "^2.0.0",
-      "gulp-sass": "^5.1.0",
-      "gulp-sourcemaps": "^3.0.0",
-      "postcss": "^8.4.27",
-      "sass": "^1.64.2",
-      "vinyl-named": "^1.1.0",
-      "webpack-stream": "^7.0.0"
+        "autoprefixer": "^10.4.16",
+        "browser-sync": "^2.29.3",
+        "concurrently": "^8.2.1",
+        "cssnano": "^6.0.1",
+        "del": "^6.1.1",
+        "gulp": "^4.0.2",
+        "gulp-plumber": "^1.2.1",
+        "gulp-postcss": "^9.0.1",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^5.1.0",
+        "gulp-sourcemaps": "^3.0.0",
+        "postcss": "^8.4.27",
+        "sass": "^1.64.2",
+        "vinyl-named": "^1.1.0",
+        "webpack-stream": "^7.0.0"
+    },
+    "dependencies": {
+        "sweetalert2": "^11.10.5"
     }
-  }
-  
+}

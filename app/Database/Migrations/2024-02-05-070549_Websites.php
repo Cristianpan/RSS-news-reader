@@ -28,7 +28,7 @@ class Websites extends Migration
         ]); 
 
         $this->forge->addKey('id', true); 
-        $this->forge->createTable('websites');
+        $this->forge->createTable('websites', true, ['ENGINE' => 'InnoDB']);
     }
 
     public function down()
