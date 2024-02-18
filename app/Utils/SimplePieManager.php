@@ -54,9 +54,9 @@ class SimplePieManager
             return [
                 'title' => $item->get_title(),
                 'url' => $item->get_link(),
-                'icon' => static::getItemImage($item->get_content()),
-                'description' => htmlspecialchars(strip_tags($item->get_description())),
-                'date' => $item->get_date("d/m/Y"),
+                'image' => $item->get_thumbnail() ?? static::getItemImage($item->get_content() ?? ''),
+                'description' => htmlspecialchars(strip_tags($item->get_content() ?? $item->get_description())),
+                'date' => $item->get_date("Y-m-d"),
                 'categories' => array_map(function ($category) {
                     return [
                         'name' => $category->get_term(),
@@ -64,7 +64,7 @@ class SimplePieManager
                 }, $item->get_categories() ?? []),
             ];
         }, $feed->get_items());
-    
+
         return $website;
     }
 

@@ -22,11 +22,14 @@ class CategoriesNews extends Model
     protected $afterDelete    = [];
 
 
-    public function createMultipleCategories(array $categories, string $newId){
-        $categoriesToInsert = array_map(function ($category) use ($newId){
-            return array_merge(['newId' => $newId], $category); 
-        },$categories); 
+    public function createMultipleCategories(array $categories, string $newId)
+    {
+        $categoriesToInsert = array_map(function ($category) use ($newId) {
+            return array_merge(['newId' => $newId], $category);
+        }, $categories);
 
-        $this->insertBatch($categoriesToInsert);
+        if (!empty($categoriesToInsert)) {
+            $this->insertBatch($categoriesToInsert);
+        }
     }
 }
