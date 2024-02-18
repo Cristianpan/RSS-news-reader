@@ -1,0 +1,43 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+@use './node_modules/sweetalert2/dist/sweetalert2.css';
+
+.swal2-html-container{
+    margin: 1rem 0 !important;
+}
+
+.swal2-container * {
+    font-size: 1.6rem;
+    color: $gray !important;  
+}
+
+.swal2-actions {
+    width: 80% !important;
+    flex-wrap: wrap !important;
+}
+
+.swal2-styled {
+    font-size: 1.6rem !important;
+    color: $white !important;
+    width: 100%;
+    @include tablet {
+        width: 15rem;
+    }
+}
+
+.swal2-confirm{
+    background-color: $blue !important;
+}
+.swal2-deny{
+    background-color: $red !important;
+}
+.swal2-cancel{
+    background-color: $gray !important;
+}
+
+.swal2-title {
+    padding: 0 !important;
+    font-size: 3.2rem !important;
+    color: darken($dark-gray, 20) !important;
+}
+

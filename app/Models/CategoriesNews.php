@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class CategoriesNews extends Model
 {
-    protected $table            = 'categoriesnews';
+    protected $table            = 'categories';
     protected $primaryKey       = 'id';
     protected $allowedFields    = ['newId', 'name'];
 
@@ -20,4 +20,13 @@ class CategoriesNews extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function createMultipleCategories(array $categories, string $newId){
+        $categoriesToInsert = array_map(function ($category) use ($newId){
+            return array_merge(['newId' => $newId], $category); 
+        },$categories); 
+
+        $this->insertBatch($categoriesToInsert);
+    }
 }
