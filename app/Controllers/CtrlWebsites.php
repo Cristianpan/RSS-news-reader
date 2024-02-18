@@ -4,10 +4,11 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Exceptions\InvalidWebsiteFeedException;
+use App\Exceptions\WebsiteExistsException;
 use App\Models\Websites;
 use App\Utils\SimplePieManager;
+use App\Validators\WebsiteValidator;
 use Exception;
-use TypeError;
 
 class CtrlWebsites extends BaseController
 {
@@ -20,6 +21,9 @@ class CtrlWebsites extends BaseController
         try {
             $websiteUrl = (string) $this->request->getPost('websiteUrl');
             $feed = SimplePieManager::getWebsiteData($websiteUrl); 
+
+            WebsiteValidator::existWebsite($feed['name']); 
+
             (new Websites())->createWebsite($feed);             
             $response = [
                 'title' => 'Registro exitoso', 
@@ -28,13 +32,14 @@ class CtrlWebsites extends BaseController
             ];
 
             return redirect()->to("websites")->with('response', $response); 
-        } catch (InvalidWebsiteFeedException $th) {
+        } catch (InvalidWebsiteFeedException | WebsiteExistsException $th) {
             $response = [
                 'title' => 'Oops! Ha ocurrido un error',
                 'message' => $th->getMessage(), 
                 'type' => 'error', 
             ]; 
         } catch (Exception $th){
+            dd($th); 
             $response = [
                 'title' => 'Oops! Ha ocurrido un error',
                 'message' => 'No se han podido guardar los datos del sitio. Por favor intente nuevamente.', 
