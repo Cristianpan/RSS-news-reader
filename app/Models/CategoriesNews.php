@@ -32,4 +32,10 @@ class CategoriesNews extends Model
             $this->insertBatch($categoriesToInsert);
         }
     }
+
+    public function getAllCategoriesOfNews(){
+        return $this->select('categories.*')
+            ->join('news', 'news.id = categories.newId')
+            ->findAll(); 
+    }
 }
