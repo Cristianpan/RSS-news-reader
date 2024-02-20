@@ -28,7 +28,7 @@
             </div>
 
             <form  action="<?= url_to('websites-delete') ?>" method="post">
-                <input type="text" value="<?=$website['id'] ?>" hidden name="id">
+                <input type="hidden" value="<?=$website['id'] ?>" hidden name="id">
                 <button type="submit" class="website__btn">
                     <img src="/assets/images/delete-icon.svg" alt="icono de eliminar">
                 </button>
