@@ -15,7 +15,8 @@ class CtrlWebsites extends BaseController
 {
     public function index()
     {
-        return view('pages/websites/index'); 
+        $websites = (new Websites())->findAll();
+        return view('pages/websites/index', ['websites' => $websites]);
     }
 
     public function create(){
