@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Exceptions\InvalidWebsiteFeedException;
 use App\Exceptions\WebsiteExistsException;
+use App\Exceptions\WebsiteNotFoundException;
 use App\Models\Websites;
 use App\Utils\SimplePieManager;
 use App\Validators\WebsiteValidator;
@@ -47,5 +48,33 @@ class CtrlWebsites extends BaseController
         }
 
         return redirect()->to(url_to("websites"))->withInput()->with('response', $response);  
+    }
+
+    public function delete(){
+        try {
+            $websiteId = (string) $this->request->getPost('id');
+            $foundWebsite = (new Websites()) -> find($websiteId);
+
+            if (!$foundWebsite) {
+                throw new WebsiteNotFoundException();
+            }
+
+            (new Websites())->delete($websiteId);
+
+            $response = [
+                'title' => 'Eliminación exitosa', 
+                'message' => 'El sitio web se eliminó con éxito', 
+                'type' => 'success'
+            ];
+
+            return redirect()->to("websites")->with('response', $response); 
+        } catch (\Throwable $th) {
+            $response = [
+                'title' => 'Oops! Ha ocurrido un error',
+                'message' => 'No es posible eliminar el sitio.', 
+                'type' => 'error', 
+            ]; 
+        }
+        return redirect()->to(url_to("websites"))->withInput()->with('response', $response); 
     }
 }

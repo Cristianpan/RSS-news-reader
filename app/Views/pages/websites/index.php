@@ -27,7 +27,7 @@
                 <p class="website__name">Diario de yucatán</p>
             </div>
 
-            <form>
+            <form  action="<?= url_to('websites-delete') ?>" method="post">
                 <input type="text" value="<?= $i ?>" hidden name="id">
                 <button type="submit" class="website__btn">
                     <img src="/assets/images/delete-icon.svg" alt="icono de eliminar">
