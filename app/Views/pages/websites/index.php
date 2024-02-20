@@ -23,7 +23,7 @@
     <?php foreach ($websites as $website) { ?>
         <div class="website">
             <div class="website__info">
-                <img class="website__icon" src="<?=$website['icon']?>" alt="Icono de diario de yucatán">
+                <img class="website__icon" src="<?=$website['icon']?>" alt="Icono de <?=$website['name'] ?>">
                 <p class="website__name"><?=$website['name'] ?></p>
             </div>
 
