@@ -20,22 +20,22 @@
 <main class="websites">
     <h2 class="websites-title websites-title--h2">Feeds registrados</h2>
 
-    <?php for ($i = 0; $i < 10; $i++) : ?>
+    <?php foreach ($websites as $website) { ?>
         <div class="website">
             <div class="website__info">
-                <img class="website__icon" src="https://newspack-yucatan.s3.amazonaws.com/uploads/2023/06/cropped-favicon-background-32x32.png" alt="Icono de diario de yucatán">
-                <p class="website__name">Diario de yucatán</p>
+                <img class="website__icon" src="<?=$website['icon']?>" alt="Icono de diario de yucatán">
+                <p class="website__name"><?=$website['name'] ?></p>
             </div>
 
             <form  action="<?= url_to('websites-delete') ?>" method="post">
-                <input type="text" value="<?= $i ?>" hidden name="id">
+                <input type="text" value="<?=$website['id'] ?>" hidden name="id">
                 <button type="submit" class="website__btn">
                     <img src="/assets/images/delete-icon.svg" alt="icono de eliminar">
                 </button>
             </form>
         </div>
 
-    <?php endfor ?>
+    <?php } ?>
 
 </main>
 <?php
