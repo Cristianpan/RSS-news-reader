@@ -24,20 +24,18 @@ class CtrlNews extends BaseController
             try {
                 $webSites = (new Websites)->findAll();
                 $countUpdateNews = 0;
+                $newsModel = new News(); 
                 foreach ($webSites as $webSite) {
                     $webSiteId = $webSite['id'];
-                    $ActualNews = (new News())->where('websiteId',$webSiteId)->findAll();
+                    $ActualNews = $newsModel->where('websiteId',$webSiteId)->findAll();
                     $feed = SimplePieManager::getWebsiteData($webSite['url']);
                     $newNews = $feed['news'];
-
-                    $oldNews = (new News())->getOldNews($ActualNews, $newNews);
-                    print_r($oldNews);
+                    $oldNews = $newsModel->getOldNews($ActualNews, $newNews);
                     if($oldNews){
                         $countUpdateNews++;
-                        $newNews = (new News())->getNewNews($ActualNews, $newNews);
-
-                        (new News())->where('websiteId', $webSiteId)->whereIn('id', $oldNews)->delete();
-                        (new News())->createMultipleNews($newNews, $webSiteId, true);
+                        $newNews = $newsModel->getNewNews($ActualNews, $newNews);
+                        $newsModel->where('websiteId', $webSiteId)->whereIn('id', $oldNews)->delete();
+                        $newsModel->createMultipleNews($newNews, $webSiteId, true);
                     }
                 }
                 UpdateNewsValidator::existOldNews($countUpdateNews);
@@ -47,7 +45,7 @@ class CtrlNews extends BaseController
                     'message' => 'Las noticias han sido actualizado exitosamente. Ahora puedes ver tus nuevas noticias', 
                     'type' => 'success'
                 ];
-                return redirect()->to(url_to("websites"))->withInput()->with('response', $response);  
+                return redirect()->to(url_to("news"))->with('response', $response);  
             } catch (NewsNotFoundException $th) {
                 $response = [
                     'title' => 'Oops! Ha ocurrido un error',
@@ -61,6 +59,6 @@ class CtrlNews extends BaseController
                     'type' => 'error', 
                 ]; 
             }
-            return redirect()->to(url_to("websites"))->withInput()->with('response', $response);
+            return redirect()->to(url_to("news"))->with('response', $response);  
         }
     }

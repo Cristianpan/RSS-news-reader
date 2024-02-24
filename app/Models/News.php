@@ -58,12 +58,10 @@ class News extends Model
             $titleSubstring = substr($new['title'], 0, 60);
             $newNewsTitles[] = $titleSubstring;
         }
-        print_r($newNewsTitles);
         $missingOldNews = array();
 
         foreach ($oldNews as $old) { 
             if (!in_array(substr($old['title'], 0, 60), $newNewsTitles)) {
-                print_r($old['title']);
                 $missingOldNews[] = $old['id'];
             }
         }
@@ -76,16 +74,13 @@ class News extends Model
             $titleSubstring = substr($new['title'], 0, 60);
             $oldNewsTitles[] = $titleSubstring;
         }
-
         $additionalNewNews = array();
-    
+        
         foreach ($newNews as $new) {
-            
             if (!in_array(substr($new['title'], 0, 60), $oldNewsTitles)) {
                 $additionalNewNews[] = $new;
             }
         }
-    
         return $additionalNewNews;
     }
     /**
