@@ -11,6 +11,10 @@
 
 <?= view('components/searchbar') ?>
 
+<form class="news-form" action="<?= url_to('news-update') ?>" method="post">
+    <input class="news-form__submit" type="submit" value="Actualizar noticias">
+</form>
+
 <main class="cards-container">
     <?php foreach ($news as $new) { ?>
         
