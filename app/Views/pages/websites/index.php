@@ -19,8 +19,8 @@
 
 <main class="websites">
 
-    <?php if (empty($website)) { ?>
-        <h2 class="not-results">No se han encontrado sitios registrados</h2>
+    <?php if (empty($websites)) { ?>
+        <h2 class="not-results mt-4">No se han encontrado sitios registrados</h2>
         <img class="image-not-result" src="/assets/images/not-results.svg">
     <?php } else { ?>
         <h2 class="websites-title websites-title--h2">Feeds registrados</h2>

@@ -9,9 +9,9 @@ class WebsiteValidator
 {
     public static function existWebsite($websiteName)
     {
-        $result = (new Websites())->where('name', $websiteName)->find(); 
-
-        if ($result) {
+        $result = (new Websites())->where('name', $websiteName)->find();
+        
+        if (!empty($result)) {
             throw new WebsiteExistsException();
         }
 

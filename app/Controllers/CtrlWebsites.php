@@ -41,6 +41,7 @@ class CtrlWebsites extends BaseController
                 'type' => 'error', 
             ]; 
         } catch (Exception $th){
+            dd($th); 
             $response = [
                 'title' => 'Oops! Ha ocurrido un error',
                 'message' => 'No se han podido guardar los datos del sitio. Por favor intente nuevamente.', 
