@@ -15,7 +15,7 @@ class Categories extends Migration
             ], 
             'name' => [
                 'type' => 'varchar', 
-                'constraint' => 60,
+                'constraint' => 150,
             ], 
             'newId' => [
                 'type' => 'int'

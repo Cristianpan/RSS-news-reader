@@ -3,6 +3,7 @@
 namespace App\Validators;
 
 use App\Exceptions\WebsiteExistsException;
+use App\Exceptions\WebsiteHasNotNewsException;
 use App\Models\Websites;
 
 class WebsiteValidator
@@ -16,5 +17,13 @@ class WebsiteValidator
         }
 
         return true;
+    }
+
+    public static function hasNews($news) {
+        if (empty($news)) {
+            throw new WebsiteHasNotNewsException(); 
+        }
+
+        return true; 
     }
 }

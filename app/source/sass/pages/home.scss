@@ -77,7 +77,7 @@
     &__image {
         width: 100%;
         aspect-ratio: 1 / 0.75;
-        max-height: 18rem;
+        max-height: 20rem;
         background-color: $light-gray;
         overflow: hidden;
 
@@ -131,6 +131,7 @@
         flex-wrap: wrap;
         margin: 0.5rem 0;
         cursor: default;
+        @include clip-text(2); 
     }
 
     &__category {

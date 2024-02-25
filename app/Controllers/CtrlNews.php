@@ -16,7 +16,7 @@ class CtrlNews extends BaseController
 {
     public function index()
     {
-        $search = (string) $this->request->getGet('search') ?? '';
+        $search = (string) $this->request->getGet('search');
         $order = (string) $this->request->getGet('order'); 
         $news = (new News())->getNews($search, $order);
         $categories = (new CategoriesNews())->getAllCategoriesOfNews();
@@ -62,6 +62,6 @@ class CtrlNews extends BaseController
                 'type' => 'error',
             ];
         }
-        return redirect()->to(url_to("news"))->with('response', $response);
+        return redirect()->back()->with('response', $response);
     }
 }

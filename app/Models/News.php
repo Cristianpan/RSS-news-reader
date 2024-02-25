@@ -78,8 +78,8 @@ class News extends Model
         $this
             ->select('news.id, news.url, news.image, news.date, news.title, news.description')
             ->join('websites', 'websites.id = websiteId')
-            ->join('categories', 'news.id = newId');
-        if ($search) {
+            ->join('categories', 'newId = news.id');
+        if ($search !== "") {
             $this
                 ->orLike('title', $search)
                 ->orLike('websites.name', $search)
@@ -87,9 +87,7 @@ class News extends Model
                 ->orLike('description', $search);
         }
 
-        if ($order) {
-            $this->orderBy($this->orderTypes[$order], 'ASC');
-        }
+        $this->orderBy($this->orderTypes[$order] ?? "date", 'ASC');
 
         return $this->groupBy('news.id')->findAll();
     }
