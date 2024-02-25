@@ -1,12 +1,9 @@
 @use '../base/variables' as *; 
 @use '../base/mixins' as *; 
 
-.container{
-    margin: 0 auto 2rem auto;
-    @include container; 
-}
-
 .search-bar{
+    @include container; 
+    margin: 0 auto 2rem auto;
     position: relative;
     height: 4rem;
     margin-bottom: 3rem;
@@ -39,36 +36,3 @@
      }
  
  }
-.news-filter{
-    display: inline-block;
-    position: relative;
-    background-color: $light-gray;
-    border-radius: 0.5rem;
-
-    &__select{
-        padding: 0.5rem 2rem 0.5rem 0.5rem;
-        display: block;
-        appearance: none;
-        border: none;
-        border-radius: 0.5rem;
-        background-color: $light-gray;
-        color: $gray;
-        font-size: 1.4rem;
-        cursor: pointer;
-
-        &:focus-visible {
-            outline-color: rgba($blue, 0.75);
-        }
-    }
-
-    &__arrow{
-        position: absolute;
-        top: 1rem; 
-        right: 0.6rem;
-        color: $gray;
-        pointer-events: none;
-        width: 1rem;
-    }
-}
-
-

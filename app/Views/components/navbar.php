@@ -11,6 +11,7 @@
 
     <nav class="nav">
         <a class="nav__link <?= url_is('') ? 'nav__link--active ' : '' ?>" href="<?= url_to('news') ?>">Inicio</a>
-        <a class="nav__link <?= url_is('websites') ? 'nav__link--active ' : '' ?>" href="<?= url_to('websites') ?>">Registra Feeds</a>
+        <a class="nav__link <?= url_is('websites') ? 'nav__link--active ' : '' ?>" href="<?= url_to('websites') ?>">Registrar feeds</a>
+        <a class="nav__link--update-news" href="<?= url_to('news-update') ?>">Actualizar noticias</a>
     </nav>
 </header>

@@ -43,18 +43,18 @@ class SimplePieManager
         if (!$feed->init()) {
             throw new InvalidWebsiteFeedException();
         }
-        
+
         $website = [
             'name' => $feed->get_title(),
             'url' => $websiteUrl,
-            'icon' => $feed->get_image_url()
+            'icon' => $feed->get_image_url() ?? '/assets/images/rss-icon.svg'
         ];
-        
+
         $website['news'] = array_map(function ($item) {
             return [
                 'title' => $item->get_title(),
                 'url' => $item->get_link(),
-                'image' => $item->get_thumbnail() ?? static::getItemImage($item->get_content() ?? ''),
+                'image' => $item->get_thumbnail()['url'] ?? static::getItemImage($item->get_content() ?? $item->get_description()),
                 'description' => htmlspecialchars(strip_tags($item->get_content() ?? $item->get_description())),
                 'date' => $item->get_date("Y-m-d"),
                 'categories' => array_map(function ($category) {

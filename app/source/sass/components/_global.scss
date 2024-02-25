@@ -70,3 +70,19 @@ button {
     background: none;
     border: none;
 }
+
+/*utils*/
+
+.not-results {
+    text-align: center;
+    font-size: 2.4rem;
+    color: $dark-gray;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.image-not-result {
+    max-height: 45vh;
+    width: auto;
+    margin: 3rem auto 2rem auto;
+}

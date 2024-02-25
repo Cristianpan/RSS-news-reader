@@ -15,7 +15,7 @@ class News extends Migration
             ], 
             'title' => [
                 'type' => 'varchar', 
-                'constraint' => 60,
+                'constraint' => 255,
             ], 
             'url' => [
                 'type' => 'varchar', 
