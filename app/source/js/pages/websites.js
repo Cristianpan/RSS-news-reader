@@ -23,7 +23,7 @@ async function deleteWebsite(e) {
   const result = await Swal.fire({
     icon: 'warning',
     title: '¿Desea eliminar el sitio?',
-    text: 'Si elimina el sitio, se eliminaran todas las noticas y no podrá deshacer esta acción.',
+    text: 'Si elimina el sitio, se eliminarán todas las noticias y no podrá deshacer esta acción.',
     showCancelButton: true, 
     showDenyButton: true, 
     showConfirmButton: false, 
