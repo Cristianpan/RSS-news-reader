@@ -59,12 +59,13 @@
     gap: 3rem;
     padding: 3rem;
     transition: right 0.3s ease-in-out;
-
+    align-items: end;
+    
     @include tablet() {
         display: flex;
         margin-right: 1.5rem;
         padding: 0;
-        gap: 4rem;
+        align-items: center;
         position: static;
     }
 
@@ -95,6 +96,21 @@
         &:hover {
             color: $blue;
             transform: scale(1.01);
+        }
+
+        &--update-news {
+            display: inline-block;
+            height: fit-content;
+            width: fit-content;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: lighten($blue, 15);
+            color: $white;
+            transition: background-color 0.3s;
+    
+            &:hover {
+                background-color: darken($blue, 15);
+            }
         }
     }
 }

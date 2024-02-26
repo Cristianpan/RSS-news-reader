@@ -10,7 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 
 //news
 $routes->get('/', [CtrlNews::class, 'index'], ['as' => 'news']);
-$routes->post('/', [CtrlNews::class, 'update'], ['as' => 'news-update']);
+$routes->get('/update-news', [CtrlNews::class, 'update'], ['as' => 'news-update']);
 
 //websites
 $routes->get('/websites', [CtrlWebsites::class, 'index'], ['as' => 'websites']);

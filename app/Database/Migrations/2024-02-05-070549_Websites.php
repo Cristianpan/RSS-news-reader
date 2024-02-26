@@ -15,11 +15,11 @@ class Websites extends Migration
             ], 
             'name' => [
                 'type' => 'varchar', 
-                'constraint' => 50,
+                'constraint' => 255,
             ], 
             'url' => [
                 'type' => 'varchar', 
-                'constraint' => 60
+                'constraint' => 255
             ], 
             'icon' => [
                 'type' => 'varchar', 

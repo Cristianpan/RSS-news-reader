@@ -16,9 +16,16 @@
     <?= view("components/navbar") ?>
 
     <?php $this->renderSection('content') ?>
-    
+
     <?php $this->renderSection('js') ?>
-    
+
+    <?php
+    $response = session()->get('response');
+    if (isset($response)) :
+    ?>
+        <div id="alert-response" data-response="<?= htmlspecialchars(json_encode($response)) ?>"></div>
+    <?php endif; ?>
+    <script src="/assets/js/alert-response.min.js"></script>
     <script src="/assets/js/navbar.min.js"></script>
 </body>
 

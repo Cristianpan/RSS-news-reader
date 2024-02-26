@@ -13,6 +13,8 @@
     &--h2 {
         text-align: left;
         font-size: 2rem;
+        margin-bottom: 1rem;
+        margin-top: 3rem;
     }
 }
 
@@ -21,7 +23,7 @@
     align-items: center;
     gap: 1.5rem;
     flex-direction: column;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto;
     @include container; 
 
     @include tablet {
@@ -29,9 +31,10 @@
     }
 
     &__message {
-        margin-top: -1rem;
         font-size: 1.4rem;
         color: $red;
+        margin: 0.5rem auto 0 auto;
+        @include container; 
     }
     
     &__input {

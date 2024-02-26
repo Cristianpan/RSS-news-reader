@@ -36,6 +36,7 @@ class CategoriesNews extends Model
     public function getAllCategoriesOfNews(){
         return $this->select('categories.*')
             ->join('news', 'news.id = categories.newId')
+            ->orderBy('name', 'asc')
             ->findAll(); 
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Exceptions\InvalidWebsiteFeedException;
 use App\Exceptions\WebsiteExistsException;
+use App\Exceptions\WebsiteHasNotNewsException;
 use App\Exceptions\WebsiteNotFoundException;
 use App\Models\Websites;
 use App\Utils\SimplePieManager;
@@ -25,6 +26,7 @@ class CtrlWebsites extends BaseController
             $feed = SimplePieManager::getWebsiteData($websiteUrl); 
 
             WebsiteValidator::existWebsite($feed['name']); 
+            WebsiteValidator::hasNews($feed['news']); 
 
             (new Websites())->createWebsite($feed);             
             $response = [
@@ -34,13 +36,14 @@ class CtrlWebsites extends BaseController
             ];
 
             return redirect()->to("websites")->with('response', $response); 
-        } catch (InvalidWebsiteFeedException | WebsiteExistsException $th) {
+        } catch (InvalidWebsiteFeedException | WebsiteExistsException | WebsiteHasNotNewsException $th) {
             $response = [
                 'title' => 'Oops! Ha ocurrido un error',
                 'message' => $th->getMessage(), 
                 'type' => 'error', 
             ]; 
         } catch (Exception $th){
+            dd($th); 
             $response = [
                 'title' => 'Oops! Ha ocurrido un error',
                 'message' => 'No se han podido guardar los datos del sitio. Por favor intente nuevamente.', 

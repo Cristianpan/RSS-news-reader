@@ -9,7 +9,13 @@ class News extends Model
     protected $table            = 'news';
     protected $primaryKey       = 'id';
     protected $allowedFields    = ['title', 'url', 'description', 'image', 'date', 'websiteId'];
-    private $lastIds; 
+    private $orderTypes = [
+        'title' => 'title',
+        'date' => 'date',
+        'category' => 'categories.name'
+    ];
+
+    private $lastIds;
 
     // Callbacks
     protected $beforeInsert   = [];
@@ -39,12 +45,12 @@ class News extends Model
             }, $newsData);
 
             $this->insertBatch($newsDataToInsert);
-            
-            $categoryModel = new CategoriesNews(); 
-            
+
+            $categoryModel = new CategoriesNews();
+
             foreach ($newsData as $index => $data) {
-                $categoryModel->createMultipleCategories($data['categories'], $this->lastIds[$index]);    
-            } 
+                $categoryModel->createMultipleCategories($data['categories'], $this->lastIds[$index]);
+            }
             !$disabledAutoCommit ? $this->db->transCommit() : '';
         } catch (\Throwable $th) {
             !$disabledAutoCommit ? $this->db->transRollback() : '';
@@ -67,6 +73,25 @@ class News extends Model
         }
         return $missingOldNews;
     }
+    public function getNews(string $search, string $order = "date")
+    {
+        $this
+            ->select('news.id, news.url, news.image, news.date, news.title, news.description')
+            ->join('websites', 'websites.id = websiteId')
+            ->join('categories', 'newId = news.id');
+        if ($search !== "") {
+            $this
+                ->orLike('title', $search)
+                ->orLike('websites.name', $search)
+                ->orLike('categories.name', $search)
+                ->orLike('description', $search);
+        }
+
+        $this->orderBy($this->orderTypes[$order] ?? "date", 'ASC');
+
+        return $this->groupBy('news.id')->findAll();
+    }
+
 
     public function getNewNews(array $oldNews, array $newNews){
         $oldNewsTitles = array();
@@ -93,10 +118,9 @@ class News extends Model
     public function setLastIds(array $data)
     {
         $lastId        = $this->insertID() + $data['result'];
-        
-        
+
         $auxLasIds = $this->select('id')->where('id <= ', $lastId)->orderBy('id', 'DESC')->limit($data['result'])->find();
-        $this->lastIds = array_column($auxLasIds, 'id'); 
+        $this->lastIds = array_column($auxLasIds, 'id');
         return $data;
     }
 
