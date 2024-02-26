@@ -1,11 +1,11 @@
 <?php $this->extend('components/layout'); ?>
 
 <?php $this->section('css') ?>
-<link rel="stylesheet" href="/assets/css/websites.min.css">
+<link rel="stylesheet" href="/assets/css/websites.css">
 <?php $this->endSection() ?>
 
 <?php $this->section('js') ?>
-<script src="/assets/js/websites.min.js"></script>
+<script src="/assets/js/websites.js"></script>
 <?php $this->endSection() ?>
 
 <?php $this->section('content') ?>
