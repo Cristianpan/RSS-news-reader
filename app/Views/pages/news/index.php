@@ -1,8 +1,12 @@
 <?php $this->extend('components/layout') ?>
 <?php $this->section('css') ?>
-<link rel="stylesheet" href="/assets/css/home.min.css">
+<link rel="stylesheet" href="/assets/css/home.css">
 
 <?php $this->endSection('css') ?>
+
+<?php $this->section('js') ?>
+<script src="/assets/js/home.js"></script>
+<?php $this->endSection('js') ?>
 
 
 <?php $this->section('content') ?>
@@ -63,7 +67,3 @@
 </main>
 
 <?php $this->endSection() ?>
-
-<?php $this->section('js') ?>
-<script src="/assets/js/home.min.js"></script>
-<?php $this->endSection('js') ?>

@@ -54,17 +54,15 @@ async function compileSass(isProduction = false) {
     await del(outputPath);
     return src(inputPath)
       .pipe(sass())
-      .pipe(postcss([autoprefixer(), cssnano()]))
-      .pipe(rename({ dirname: ".", suffix: ".min" }))
+      .pipe(postcss([autoprefixer()]))
+      .pipe(rename({ dirname: "."}))
       .pipe(dest(outputPath));
   } else {
     return src(inputPath)
       .pipe(plumber())
-      .pipe(sourcemaps.init())
       .pipe(sass())
-      .pipe(postcss([autoprefixer(), cssnano()]))
-      .pipe(rename({ dirname: ".", suffix: ".min" }))
-      .pipe(sourcemaps.write("."))
+      .pipe(postcss([autoprefixer()]))
+      .pipe(rename({ dirname: "."}))
       .pipe(dest(outputPath));
   }
 }
@@ -76,7 +74,10 @@ async function compileSass(isProduction = false) {
 async function compileJavascript(isProduction = false) {
   const webpackConfig = {
     mode: isProduction ? "production" : "development",
-    output: { filename: "[name].min.js" },
+    output: { filename: "[name].js" },
+    optimization: {
+      minimize: false  
+    }
   };
   const { js: inputPath } = inputPaths;
   const { js: outputPath } = outputPaths;
