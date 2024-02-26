@@ -74,7 +74,7 @@ async function compileSass(isProduction = false) {
 async function compileJavascript(isProduction = false) {
   const webpackConfig = {
     mode: isProduction ? "production" : "development",
-    output: { filename: "[name].min.js" },
+    output: { filename: "[name].js" },
     optimization: {
       minimize: false  
     }
