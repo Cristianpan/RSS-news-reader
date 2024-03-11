@@ -41,9 +41,7 @@
 
             <article class="news-card">
                 <div class="news-card__image">
-                    <?php if ($new['image']) : ?>
-                        <img loading="lazy" async src="<?= $new['image'] ?>" alt="Imagen de la noticia<?= $new['title'] ?>">
-                    <?php endif ?>
+                    <img loading="lazy" async src="<?= $new['image'] ?? '/assets/images/bg-none.svg' ?>" alt="Imagen de la noticia<?= $new['title'] ?>">
                 </div>
                 <div class="news-card__info-container">
                     <h1 class="news-card__title"><?= $new['title'] ?></h1>
