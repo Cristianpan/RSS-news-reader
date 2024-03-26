@@ -1,3 +1,8 @@
+<?php
+
+use App\Utils\UrlGenerator;
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,8 +30,8 @@
     ?>
         <div id="alert-response" data-response="<?= htmlspecialchars(json_encode($response)) ?>"></div>
     <?php endif; ?>
-    <script src="/assets/js/alert-response.js"></script>
-    <script src="/assets/js/navbar.js"></script>
+    <script src="<?=UrlGenerator::generateAssetUrl("/assets/js/alert-response.min.js")?>"></script>
+    <script src="<?=UrlGenerator::generateAssetUrl("/assets/js/navbar.min.js")?>"></script>
 </body>
 
 </html>
