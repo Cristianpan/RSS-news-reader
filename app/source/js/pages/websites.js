@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-
 document.addEventListener("DOMContentLoaded", () => {
   const deleteBtns = document.querySelectorAll(".website-delete");
 
@@ -7,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteBtn.addEventListener("submit", deleteWebsite);
   });
 
-  document.querySelector(".websites-form").addEventListener("submit", sendForm);
+  document.getElementById("websites-form").addEventListener("submit", sendForm);
 });
 
 function sendForm(e) {
@@ -21,25 +19,26 @@ function sendForm(e) {
 async function deleteWebsite(e) {
   e.preventDefault();
   const result = await Swal.fire({
-    icon: 'warning',
-    title: '¿Desea eliminar el sitio?',
-    text: 'Si elimina el sitio, se eliminarán todas las noticias y no podrá deshacer esta acción.',
-    showCancelButton: true, 
-    showDenyButton: true, 
-    showConfirmButton: false, 
-    denyButtonText: 'Aceptar'
+    icon: "warning",
+    title: "¿Desea eliminar el sitio?",
+    text: "Si elimina el sitio, se eliminarán todas las noticias y no podrá deshacer esta acción.",
+    showCancelButton: true,
+    showDenyButton: true,
+    showConfirmButton: false,
+    denyButtonText: "Aceptar",
   });
 
   if (result.isDenied) {
-    this.submit(); 
+    this.submit();
   }
 }
 
 function createMessage(parent) {
-  let message = document.querySelector("websites-fomr__message");
+  let message = document.getElementById("websites-form__message");
   if (!message) {
     message = document.createElement("p");
-    message.classList.add( "websites-form__message");
+    message.id = "websites-form__message";
+    message.classList.add("websites-form__message");
     message.textContent =
       "Por favor ingrese una URL para poder registrar el sitio";
     parent.after(message);

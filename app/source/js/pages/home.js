@@ -1,8 +1,6 @@
 import '../components/filter';
 
-const searchBar = document.querySelector('.search-bar'); 
-let queryParams; 
-
+const searchBar = document.getElementById('search-bar'); 
 document.addEventListener('DOMContentLoaded', ()=> {
     searchBar.addEventListener('submit', search); 
 }); 

@@ -8,7 +8,8 @@
     },
     "scripts": {
         "dev": "concurrently -n php,gulp -c magenta,cyan \"php spark serve\" \"gulp dev\"",
-        "build": "gulp build"
+        "build": "gulp build",
+        "build-test" : "gulp build && php spark serve --port 3000"
     },
     "author": "",
     "license": "ISC",
@@ -29,8 +30,5 @@
         "sass": "^1.64.2",
         "vinyl-named": "^1.1.0",
         "webpack-stream": "^7.0.0"
-    },
-    "dependencies": {
-        "sweetalert2": "^11.10.5"
     }
 }

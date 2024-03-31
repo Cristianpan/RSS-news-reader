@@ -1,5 +1,5 @@
 const botonMenu = document.getElementById("header_nav-btn");
-const nav = document.querySelector(".nav");
+const nav = document.getElementById("nav");
 const imageOpen = document.getElementById("btn-open");
 const imageClose = document.getElementById("btn-close");
 

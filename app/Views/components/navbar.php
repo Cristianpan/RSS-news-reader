@@ -9,7 +9,7 @@
         <img class="header__nav-btn-img header__nav-btn-img--close header__nav-btn-img--hidden" id="btn-close" src="/assets/images/close-md-svgrepo-com.svg" alt="Botón del menú">
     </button>
 
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <a class="nav__link <?= url_is('') ? 'nav__link--active ' : '' ?>" href="<?= url_to('news') ?>">Inicio</a>
         <a class="nav__link <?= url_is('websites') ? 'nav__link--active ' : '' ?>" href="<?= url_to('websites') ?>">Registrar feeds</a>
         <a class="nav__link--update-news" href="<?= url_to('news-update') ?>">Actualizar noticias</a>

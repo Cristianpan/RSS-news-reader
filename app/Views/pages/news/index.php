@@ -7,7 +7,6 @@ use App\Utils\UrlGenerator;
 <?php $this->section('css') ?>
 <link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/home.min.css") ?>" as="style">
 <link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/home.min.css") ?>">
-
 <?php $this->endSection('css') ?>
 
 <?php $this->section('js') ?>
@@ -30,7 +29,7 @@ use App\Utils\UrlGenerator;
             <option value="title">Título</option>
             <option value="category">Categoría</option>
         </select>
-        <img src="/assets/images/down-arrow-icon.svg" alt="" class="news-filter__arrow">
+        <img src="/assets/images/down-arrow-icon.svg" alt="icon" class="news-filter__arrow">
     </div>
 </div>
 
@@ -47,7 +46,7 @@ use App\Utils\UrlGenerator;
 
             <article class="news-card">
                 <div class="news-card__image">
-                    <img loading="lazy" async src="<?= $new['image'] ?? '/assets/images/bg-none.svg' ?>" alt="Imagen de la noticia<?= $new['title'] ?>">
+                    <img src="<?= $new['image'] ?? '/assets/images/bg-none.svg' ?>" loading="lazy" width="300" height="200" alt="Imagen de la noticia<?= $new['title'] ?>">
                 </div>
                 <div class="news-card__info-container">
                     <h1 class="news-card__title"><?= $new['title'] ?></h1>

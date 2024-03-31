@@ -1,5 +1,8 @@
 @use '../base/normalize';
 @use '../base/variables' as *;
+@use './navbar';
+@use './searchbar'; 
+@use './alert-response';
 
 html {
     font-size: 62.5%;

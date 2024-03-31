@@ -17,7 +17,7 @@ use App\Utils\UrlGenerator;
 
 <h1 class="websites-title">¡Registra tus sitios favoritos!</h1>
 
-<form class="websites-form" action="<?= url_to('website-create') ?>" method="post">
+<form class="websites-form" id="websites-form" action="<?= url_to('website-create') ?>" method="post">
     <input class="websites-form__input" type="text" name="websiteUrl" placeholder="Ingresa el enlace del sitio, ej:  https://www.yucatan.com.mx/" value="<?= old('websiteUrl') ?? '' ?>">
     <input class="websites-form__submit" type="submit" value="Registrar">
 </form>

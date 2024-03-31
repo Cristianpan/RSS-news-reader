@@ -45,8 +45,8 @@ class CtrlNews extends BaseController
             UpdateNewsValidator::existOldNews($countUpdateNews);
 
             $response = [
-                'title' => 'Registro exitoso',
-                'message' => 'Las noticias han sido actualizado exitosamente. Ahora puedes ver tus nuevas noticias',
+                'title' => 'Actualización exitosa',
+                'message' => 'Las noticias han sido actualizadas exitosamente. Ahora puedes ver tus nuevas noticias',
                 'type' => 'success'
             ];
         } catch (NewsNotFoundException $th) {
