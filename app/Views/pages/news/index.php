@@ -23,7 +23,7 @@ use App\Utils\UrlGenerator;
 
 <div class="news-action">
     <div class="news-filter">
-        <select name="order" id="news-filter__select" class="news-filter__select">
+        <select name="order" id="news-filter__select" class="news-filter__select" aria-label="Ordenar Por">
             <option id="news-filter__label" selected disabled>Ordenar por: </option>
             <option value="date">Fecha</option>
             <option value="title">Título</option>

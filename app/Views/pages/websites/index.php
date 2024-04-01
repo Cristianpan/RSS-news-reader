@@ -33,14 +33,14 @@ use App\Utils\UrlGenerator;
     <?php foreach ($websites as $website) { ?>
         <div class="website">
             <div class="website__info">
-                <img class="website__icon" src="<?= $website['icon'] ?>" alt="Icono de <?= $website['name'] ?>">
+                <img class="website__icon" src="<?= $website['icon'] ?>" alt="Icono de <?= $website['name'] ?>" width="40" height="40">
                 <p class="website__name"><?= $website['name'] ?></p>
             </div>
 
             <form class="website-delete" action="<?= url_to('websites-delete') ?>" method="post">
                 <input type="hidden" value="<?= $website['id'] ?>" hidden name="id">
-                <button type="submit" class="website__btn">
-                    <img src="/assets/images/delete-icon.svg" alt="icono de eliminar">
+                <button title="Eliminar" type="submit" class="website__btn">
+                    <img src="/assets/images/delete-icon.svg" alt="icono de eliminar" width="38" height="38"> 
                 </button>
             </form>
         </div>

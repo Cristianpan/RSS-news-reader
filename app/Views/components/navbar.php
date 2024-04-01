@@ -1,12 +1,12 @@
 <header class="header">
 
     <a class="header__logo" href="/">
-        <img class="header__logo-image" src="/assets/images/img2.svg" alt="logo">
+        <img class="header__logo-image" src="/assets/images/img2.svg" alt="logo" width="195" height="45">
     </a>
 
     <button type="button" class="header__nav-btn" id="header_nav-btn">
-        <img class="header__nav-btn-img" id="btn-open" src="/assets/images/list.svg" alt="Botón del menú">
-        <img class="header__nav-btn-img header__nav-btn-img--close header__nav-btn-img--hidden" id="btn-close" src="/assets/images/close-md-svgrepo-com.svg" alt="Botón del menú">
+        <img class="header__nav-btn-img" title="Abrir menú" id="btn-open" src="/assets/images/list.svg" alt="Botón del menú" width="56" height="35">
+        <img class="header__nav-btn-img header__nav-btn-img--close header__nav-btn-img--hidden" title="Cerrar menú" id="btn-close" src="/assets/images/close-md-svgrepo-com.svg" alt="Botón del menú" width="56" height="35">
     </button>
 
     <nav class="nav" id="nav">

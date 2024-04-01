@@ -130,3 +130,6 @@ node_modules
 #assets 
 public/assets/js
 public/assets/css
+
+#cache files 
+busters.json
