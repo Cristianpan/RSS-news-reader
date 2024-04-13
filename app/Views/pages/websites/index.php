@@ -1,23 +1,19 @@
-<?php
-
-use App\Utils\UrlGenerator;
-?>
 <?php $this->extend('components/layout'); ?>
 
 <?php $this->section('css') ?>
-<link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/websites.min.css") ?>" as="style">
-<link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/websites.min.css") ?>">
+<link rel="preload" href="/assets/css/websites.min.css" as="style">
+<link rel="stylesheet" href="/assets/css/websites.min.css">
 <?php $this->endSection() ?>
 
 <?php $this->section('js') ?>
-<script src="<?= UrlGenerator::generateAssetUrl("/assets/js/websites.min.js") ?>"></script>
+<script src="/assets/js/websites.min.js"></script>
 <?php $this->endSection() ?>
 
 <?php $this->section('content') ?>
 
 <h1 class="websites-title">¡Registra tus sitios favoritos!</h1>
 
-<form class="websites-form" action="<?= url_to('website-create') ?>" method="post">
+<form class="websites-form" id="websites-form" action="<?= url_to('website-create') ?>" method="post">
     <input class="websites-form__input" type="text" name="websiteUrl" placeholder="Ingresa el enlace del sitio, ej:  https://www.yucatan.com.mx/" value="<?= old('websiteUrl') ?? '' ?>">
     <input class="websites-form__submit" type="submit" value="Registrar">
 </form>
@@ -33,14 +29,14 @@ use App\Utils\UrlGenerator;
     <?php foreach ($websites as $website) { ?>
         <div class="website">
             <div class="website__info">
-                <img class="website__icon" src="<?= $website['icon'] ?>" alt="Icono de <?= $website['name'] ?>">
+                <img class="website__icon" src="<?= $website['icon'] ?>" alt="Icono de <?= $website['name'] ?>" width="40" height="40">
                 <p class="website__name"><?= $website['name'] ?></p>
             </div>
 
             <form class="website-delete" action="<?= url_to('websites-delete') ?>" method="post">
                 <input type="hidden" value="<?= $website['id'] ?>" hidden name="id">
-                <button type="submit" class="website__btn">
-                    <img src="/assets/images/delete-icon.svg" alt="icono de eliminar">
+                <button title="Eliminar" type="submit" class="website__btn">
+                    <img src="/assets/images/delete-icon.svg" alt="icono de eliminar" width="38" height="38"> 
                 </button>
             </form>
         </div>

@@ -58,7 +58,8 @@ class News extends Model
         }
     }
 
-    public function getOldNews(array $oldNews, array $newNews){
+    public function getOldNews(array $oldNews, array $newNews)
+    {
         $newNewsTitles = array();
         foreach ($newNews as $new) {
             $titleSubstring = substr($new['title'], 0, 60);
@@ -66,14 +67,15 @@ class News extends Model
         }
         $missingOldNews = array();
 
-        foreach ($oldNews as $old) { 
+        foreach ($oldNews as $old) {
             if (!in_array(substr($old['title'], 0, 60), $newNewsTitles)) {
                 $missingOldNews[] = $old['id'];
             }
         }
         return $missingOldNews;
     }
-    public function getNews(string $search, string $order = "date")
+
+    public function getNews(string $search, string $order = "date", int $page = 1)
     {
         $this
             ->select('news.id, news.url, news.image, news.date, news.title, news.description')
@@ -89,18 +91,19 @@ class News extends Model
 
         $this->orderBy($this->orderTypes[$order] ?? "date", 'ASC');
 
-        return $this->groupBy('news.id')->findAll();
+        return $this->groupBy('news.id')->paginate(ITEMS_PER_PAGE, 'news', $page ? $page : 1);
     }
 
 
-    public function getNewNews(array $oldNews, array $newNews){
+    public function getNewNews(array $oldNews, array $newNews)
+    {
         $oldNewsTitles = array();
         foreach ($oldNews as $new) {
             $titleSubstring = substr($new['title'], 0, 60);
             $oldNewsTitles[] = $titleSubstring;
         }
         $additionalNewNews = array();
-        
+
         foreach ($newNews as $new) {
             if (!in_array(substr($new['title'], 0, 60), $oldNewsTitles)) {
                 $additionalNewNews[] = $new;

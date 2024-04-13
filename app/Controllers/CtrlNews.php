@@ -17,10 +17,15 @@ class CtrlNews extends BaseController
     public function index()
     {
         $search = (string) $this->request->getGet('search');
-        $order = (string) $this->request->getGet('order'); 
-        $news = (new News())->getNews($search, $order);
+        $order = (string) $this->request->getGet('order');
+        $page = (int) $this->request->getGet('page');
+
+        $newsModel = new News();
+        $news = $newsModel->getNews($search, $order, $page);
         $categories = (new CategoriesNews())->getAllCategoriesOfNews();
-        return view('pages/news/index', ['news' => $news, 'categories' => $categories]);
+        $total = $newsModel->pager->getTotal('news');
+
+        return view('pages/news/index', ['news' => $news, 'total' => $total, 'perPage' => ITEMS_PER_PAGE, 'page' => $page, 'categories' => $categories]);
     }
 
     public function update()
@@ -45,8 +50,8 @@ class CtrlNews extends BaseController
             UpdateNewsValidator::existOldNews($countUpdateNews);
 
             $response = [
-                'title' => 'Registro exitoso',
-                'message' => 'Las noticias han sido actualizado exitosamente. Ahora puedes ver tus nuevas noticias',
+                'title' => 'Actualización exitosa',
+                'message' => 'Las noticias han sido actualizadas exitosamente. Ahora puedes ver tus nuevas noticias',
                 'type' => 'success'
             ];
         } catch (NewsNotFoundException $th) {

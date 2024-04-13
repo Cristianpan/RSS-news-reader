@@ -1,5 +1,3 @@
-import Swal from "sweetalert2";
-
 (() => {
   const alertResponse = document.querySelector("#alert-response");
 
@@ -15,6 +13,7 @@ import Swal from "sweetalert2";
         text: message,
         confirmButtonText: 'Aceptar'
       });
-    }, 1);
+    }, 300);
   }
 })();
+
