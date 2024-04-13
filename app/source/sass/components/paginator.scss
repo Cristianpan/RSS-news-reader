@@ -1,0 +1,54 @@
+
+@use '../base/variables' as *;
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem 0;
+    gap: 1rem;
+
+    &__next, &__prev {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $blue;
+        border: 0.2rem solid darken($light-gray, 10);
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 0.5rem;        
+
+        &--disabled {
+            color: $gray;
+        }
+    }
+
+    &__page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 0.5rem;
+        border: 0.2rem solid darken($light-gray, 10);
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $dark;
+        cursor: pointer;
+
+        &--arrow {
+            color: $blue;
+            cursor: pointer;
+        }
+
+        &--disabled {
+            cursor: not-allowed;
+            color: $gray;
+        }
+
+        &--current {
+            border-color: $blue;
+            color: $blue;
+        }
+    }
+}

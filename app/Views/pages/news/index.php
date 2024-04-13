@@ -7,10 +7,13 @@ use App\Utils\UrlGenerator;
 <?php $this->section('css') ?>
 <link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/home.min.css") ?>" as="style">
 <link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/home.min.css") ?>">
+<link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/paginator.min.css") ?>" as="style">
+<link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/paginator.min.css") ?>">
 <?php $this->endSection('css') ?>
 
 <?php $this->section('js') ?>
 <script src="<?= UrlGenerator::generateAssetUrl("/assets/js/home.min.js") ?>"></script>
+<script src="<?= UrlGenerator::generateAssetUrl("/assets/js/paginator.min.js") ?>"></script>
 <?php $this->endSection('js') ?>
 
 
@@ -68,5 +71,8 @@ use App\Utils\UrlGenerator;
         <?php } ?>
     </div>
 </main>
+
+
+<div id="pagination" class="pagination" data-total=<?= $total ?> data-perpage=<?= $perPage ?> data-page=<?= $page ?>></div>
 
 <?php $this->endSection() ?>

@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "concurrently -n php,gulp -c magenta,cyan \"php spark serve\" \"gulp dev\"",
         "build": "gulp build",
-        "build-test" : "gulp build && php spark serve --port 3000"
+        "build-test": "gulp build && php spark serve --port 3000"
     },
     "author": "",
     "license": "ISC",
@@ -30,5 +30,8 @@
         "sass": "^1.64.2",
         "vinyl-named": "^1.1.0",
         "webpack-stream": "^7.0.0"
+    },
+    "dependencies": {
+        "tui-pagination": "^3.4.1"
     }
 }
