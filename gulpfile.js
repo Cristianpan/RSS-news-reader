@@ -17,9 +17,6 @@ const named = require("vinyl-named");
 //Browsersync
 const browserSync = require("browser-sync").create();
 
-// Cache bust
-const bust = require("gulp-buster");
-
 //PATHS
 const inputPaths = {
   sass: `./app/source/sass/**/*.scss`,
@@ -57,8 +54,6 @@ async function compileSass(isProduction = false) {
       .pipe(postcss([autoprefixer(), cssnano()]))
       .pipe(rename({ dirname: ".", suffix: ".min" }))
       .pipe(dest(outputPath))
-      .pipe(bust())
-      .pipe(dest("."));
   } else {
     return src(inputPath)
       .pipe(plumber())
@@ -89,8 +84,6 @@ async function compileJavascript(isProduction = false) {
       .pipe(webpack(webpackConfig))
       .pipe(rename({ dirname: "." }))
       .pipe(dest(outputPath))
-      .pipe(bust())
-      .pipe(dest("."));
   } else {
     webpackConfig["devtool"] = "source-map";
     return src(inputPath)

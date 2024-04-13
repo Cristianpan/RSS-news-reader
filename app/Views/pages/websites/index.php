@@ -1,16 +1,12 @@
-<?php
-
-use App\Utils\UrlGenerator;
-?>
 <?php $this->extend('components/layout'); ?>
 
 <?php $this->section('css') ?>
-<link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/websites.min.css") ?>" as="style">
-<link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/websites.min.css") ?>">
+<link rel="preload" href="/assets/css/websites.min.css" as="style">
+<link rel="stylesheet" href="/assets/css/websites.min.css">
 <?php $this->endSection() ?>
 
 <?php $this->section('js') ?>
-<script src="<?= UrlGenerator::generateAssetUrl("/assets/js/websites.min.js") ?>"></script>
+<script src="/assets/js/websites.min.js"></script>
 <?php $this->endSection() ?>
 
 <?php $this->section('content') ?>
