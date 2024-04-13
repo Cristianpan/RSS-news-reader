@@ -45,7 +45,7 @@
 
             <article class="news-card">
                 <div class="news-card__image">
-                    <img src="<?= $new['image'] ?? '/assets/images/bg-none.svg' ?>" loading="lazy" width="300" height="200" alt="Imagen de la noticia<?= $new['title'] ?>">
+                    <img src="<?= $new['image'] ? $new['image'] : '/assets/images/bg-none.svg' ?>" loading="lazy" width="300" height="200" alt="Imagen de la noticia<?= $new['title'] ?>">
                 </div>
                 <div class="news-card__info-container">
                     <h1 class="news-card__title"><?= $new['title'] ?></h1>
