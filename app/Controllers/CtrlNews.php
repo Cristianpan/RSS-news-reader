@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Exceptions\NewsNotFoundException;
-use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\News;
 use App\Models\CategoriesNews;
 use App\Models\Websites;
