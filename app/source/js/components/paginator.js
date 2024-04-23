@@ -7,7 +7,7 @@ const { total, perpage, page } = paginatorContainer.dataset;
 
 const options = {
   totalItems: +total,
-  itemsPerPages: +perpage,
+  itemsPerPage: +perpage,
   visiblePages: mediaQuery.matches ? 4 : 2,
   page: getCurrentPage(+total, +perpage, +page),
   template: {
