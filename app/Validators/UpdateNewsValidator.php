@@ -8,7 +8,7 @@ class UpdateNewsValidator
 {
     public static function existOldNews($countNews)
     {
-        if ($countNews == 0) {
+        if (!$countNews) {
             throw new NewsNotFoundException();
         }
         

@@ -36,6 +36,42 @@ class SimplePieManager
      */
     static public function getWebsiteData(string $websiteUrl): array
     {
+        $feed = static::getFeed($websiteUrl);
+
+        $lastModified = $feed->data['headers']['last-modified'];
+
+        $website = [
+            'name' => $feed->get_title(),
+            'url' => $websiteUrl,
+            'icon' => $feed->get_image_url() ?? '/assets/images/rss-icon.svg',
+            'updatedAt' => date('Y-m-d H:i:s', strtotime($lastModified)),
+            'news' => static::getWebsiteItems($feed->get_items())
+        ];
+
+        return $website;
+    }
+
+    static public function getWebsiteDataToUpdate(string $websiteUrl, int $lastModified)
+    {
+        $feed = static::getFeed($websiteUrl);
+
+        $currentLastModified = strtotime($feed->data['headers']['last-modified']);
+        $hasModified = $currentLastModified === $lastModified;
+
+        if (!$hasModified) {
+            return null;
+        }
+
+        $website = [
+            'updatedAt' => date('Y-m-d H:i:s', $currentLastModified),
+            'news' => static::getWebsiteItems($feed->get_items())
+        ];
+
+        return $website;
+    }
+
+    static private function getFeed(string $websiteUrl)
+    {
         $feed = new SimplePie();
         $feed->enable_cache(false);
         $feed->set_feed_url($websiteUrl);
@@ -44,13 +80,12 @@ class SimplePieManager
             throw new InvalidWebsiteFeedException();
         }
 
-        $website = [
-            'name' => $feed->get_title(),
-            'url' => $websiteUrl,
-            'icon' => $feed->get_image_url() ?? '/assets/images/rss-icon.svg'
-        ];
+        return $feed;
+    }
 
-        $website['news'] = array_map(function ($item) {
+    static private function getWebsiteItems(array $items)
+    {
+        return array_map(function ($item) {
             return [
                 'title' => $item->get_title(),
                 'url' => $item->get_link(),
@@ -63,9 +98,7 @@ class SimplePieManager
                     ];
                 }, $item->get_categories() ?? []),
             ];
-        }, $feed->get_items());
-
-        return $website;
+        }, $items);
     }
 
     static private function getItemImage(string $content)
