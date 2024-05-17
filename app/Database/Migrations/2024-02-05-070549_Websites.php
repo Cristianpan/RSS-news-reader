@@ -16,18 +16,29 @@ class Websites extends Migration
             'name' => [
                 'type' => 'varchar', 
                 'constraint' => 255,
+                'null' => false,
             ], 
             'url' => [
                 'type' => 'varchar', 
-                'constraint' => 255
+                'constraint' => 255,
+                'null' => false,
             ], 
             'icon' => [
                 'type' => 'varchar', 
                 'constraint' => 255,
+                'null' => false,
+            ],
+            'updatedAt' => [
+                'type' => 'datetime',
+                'null' => false,
             ]
         ]); 
 
         $this->forge->addKey('id', true); 
+        $this->forge->addKey('name');
+        $this->forge->addKey('url');
+        $this->forge->addKey('icon');
+        $this->forge->addKey('updatedAt');
         $this->forge->createTable('websites', true, ['ENGINE' => 'InnoDB']);
     }
 

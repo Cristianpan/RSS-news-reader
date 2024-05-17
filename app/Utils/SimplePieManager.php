@@ -77,7 +77,7 @@ class SimplePieManager
         if (isset($matches[1])) {
             return $matches[1];
         } else {
-            return null;
+            return '/assets/images/bg-none.svg';
         }
     }
 }

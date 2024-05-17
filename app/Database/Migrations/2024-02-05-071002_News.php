@@ -16,10 +16,12 @@ class News extends Migration
             'title' => [
                 'type' => 'varchar', 
                 'constraint' => 255,
+                'null' => false,
             ], 
             'url' => [
                 'type' => 'varchar', 
                 'constraint' => 255,
+                'null' => false,
             ], 
             'description' => [
                 'type' => 'text', 
@@ -27,9 +29,11 @@ class News extends Migration
             'image' => [
                 'type' => 'varchar',
                 'constraint' => 255,
+                'null' => false, 
             ], 
             'date' => [
-                'type' => 'date'
+                'type' => 'date', 
+                'null' => false, 
             ],
             'websiteId' => [
                 'type' => 'int'
@@ -37,6 +41,10 @@ class News extends Migration
         ]); 
 
         $this->forge->addKey('id', true); 
+        $this->forge->addKey('title');
+        $this->forge->addKey('url');
+        $this->forge->addKey('image');
+        $this->forge->addKey('date');
         $this->forge->addForeignKey('websiteId', 'websites', 'id', 'CASCADE', 'CASCADE', 'websiteId_new_FK');
         $this->forge->createTable('news', true, ['ENGINE' => 'InnoDB']);
     }

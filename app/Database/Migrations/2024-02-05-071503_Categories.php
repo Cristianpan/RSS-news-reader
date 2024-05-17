@@ -16,6 +16,7 @@ class Categories extends Migration
             'name' => [
                 'type' => 'varchar', 
                 'constraint' => 150,
+                'null' => false
             ], 
             'newId' => [
                 'type' => 'int'
@@ -23,6 +24,7 @@ class Categories extends Migration
         ]);
 
         $this->forge->addKey('id', true); 
+        $this->forge->addKey('name'); 
         $this->forge->addForeignKey('newId', 'news', 'id', 'CASCADE', 'CASCADE', 'newId_category_FK');
         $this->forge->createTable('categories', true, ['ENGINE' => 'InnoDB']);
     }
