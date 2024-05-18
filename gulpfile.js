@@ -17,6 +17,9 @@ const named = require("vinyl-named");
 //Browsersync
 const browserSync = require("browser-sync").create();
 
+// Cache bust
+const bust = require("gulp-buster");
+
 //PATHS
 const inputPaths = {
   sass: `./app/source/sass/**/*.scss`,
@@ -45,7 +48,7 @@ function serve() {
 // CSS
 async function compileSass(isProduction = false) {
   const { sass: inputPath } = inputPaths;
-  const { css: outputPath} = outputPaths;
+  const { css: outputPath } = outputPaths;
 
   if (isProduction) {
     await del(outputPath);
@@ -54,6 +57,8 @@ async function compileSass(isProduction = false) {
       .pipe(postcss([autoprefixer(), cssnano()]))
       .pipe(rename({ dirname: ".", suffix: ".min" }))
       .pipe(dest(outputPath))
+      .pipe(bust())
+      .pipe(dest("."));
   } else {
     return src(inputPath)
       .pipe(plumber())
@@ -62,7 +67,7 @@ async function compileSass(isProduction = false) {
       .pipe(postcss([autoprefixer(), cssnano()]))
       .pipe(rename({ dirname: ".", suffix: ".min" }))
       .pipe(sourcemaps.write("."))
-      .pipe(dest(outputPath))
+      .pipe(dest(outputPath));
   }
 }
 // ------------------------------------------------------------------- //
@@ -76,7 +81,7 @@ async function compileJavascript(isProduction = false) {
     output: { filename: "[name].min.js" },
   };
   const { js: inputPath } = inputPaths;
-  const { js: outputPath} = outputPaths;
+  const { js: outputPath } = outputPaths;
   if (isProduction) {
     await del(outputPath);
     return src(inputPath)
@@ -84,6 +89,8 @@ async function compileJavascript(isProduction = false) {
       .pipe(webpack(webpackConfig))
       .pipe(rename({ dirname: "." }))
       .pipe(dest(outputPath))
+      .pipe(bust())
+      .pipe(dest("."));
   } else {
     webpackConfig["devtool"] = "source-map";
     return src(inputPath)
