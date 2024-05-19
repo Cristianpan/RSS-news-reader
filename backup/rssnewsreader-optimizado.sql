@@ -7,20 +7,30 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) NOT NULL,
+  `name` varchar(150) NOT NULL,
   `newId` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `newId_category_FK` (`newId`),
+  KEY `name` (`name`),
   CONSTRAINT `newId_category_FK` FOREIGN KEY (`newId`) REFERENCES `news` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=294 DEFAULT CHARSET=utf8mb3;
 
-DROP TABLE IF EXISTS `news`;
+CREATE TABLE `migrations` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `version` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `group` varchar(255) NOT NULL,
+  `namespace` varchar(255) NOT NULL,
+  `time` int NOT NULL,
+  `batch` int unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
+
 CREATE TABLE `news` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(60) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -28,17 +38,25 @@ CREATE TABLE `news` (
   `websiteId` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `websiteId_new_FK` (`websiteId`),
+  KEY `title` (`title`),
+  KEY `url` (`url`),
+  KEY `image` (`image`),
+  KEY `date` (`date`),
   CONSTRAINT `websiteId_new_FK` FOREIGN KEY (`websiteId`) REFERENCES `websites` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb3;
 
-DROP TABLE IF EXISTS `websites`;
 CREATE TABLE `websites` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `url` varchar(60) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
   `icon` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `name` (`name`),
+  KEY `url` (`url`),
+  KEY `icon` (`icon`),
+  KEY `updatedAt` (`updatedAt`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 
 INSERT INTO `categories` (`id`, `name`, `newId`) VALUES
 (1, 'Mundo', 10);
@@ -467,10 +485,10 @@ INSERT INTO `news` (`id`, `title`, `url`, `description`, `image`, `date`, `websi
 (109, 'Un pasajero de avión fue visto en un compartimento superior. Esta es la razón por la que es una idea terrible', 'https://cnnespanol.cnn.com/2024/05/15/pasajero-avion-compartimento-superior-idea-terrible-trax/', '(CNN) -- Los compartimentos superiores de avión son el hogar de equipaje de todas las formas y tamaños, de algún que otro abrigo, varias bolsas del duty-free, bastante polvo y… ¿pasajeros?\n\nLa semana pasada, se publicó un video en TikTok que parecía mostrar a un viajero en un vuelo de Southwest Airlines que miraba desde el interior de un casillero superior. El clip se difundió rápidamente en las redes sociales, aunque el TikTok original parece haber sido eliminado desde entonces.\nNo es la primera vez que un video como este llega a Internet. En 2019, una azafata, también en un vuelo de Southwest, fue capturada en un clip cuando asomaba la cabeza por un compartimento superior. En ese momento, la aerolínea emitió un comunicado donde dijo que el miembro de la tripulación estaba disfrutando de &quot;un breve momento de diversión&quot;, antes de confirmar que &quot;este no es nuestro procedimiento normal&quot;.\nUn representante de Southwest le dijo a CNN Travel que la aerolínea también estaba &quot;consciente&quot; del incidente del compartimento de la semana pasada y actualmente lo está &quot;investigando&quot;.\nNo es un “lugar autorizado para pasajeros”\nDado que se recomienda a los pasajeros permanecer en sus asientos durante el viaje en avión (normalmente con el cinturón de seguridad abrochado), no hace falta decir que subir al compartimento superior es una mala idea.\nComo le dijo a CNN Travel la azafata británica Kris Major, el compartimiento superior “no es un lugar autorizado para estar como pasajero”.\n&quot;Si nos topáramos con turbulencias, podrían lastimarse; si salieran disparados (del compartimento), podrían lastimarse mucho y también podrían lastimar a alguien debajo de ellos&quot;, dice Major, y agrega que un pasajero que está allí tampoco tendría acceso a una mascarilla de oxígeno en caso de emergencia.\n\nEsta aerolínea pesa a los pasajeros con su equipaje de mano antes de subir al avión\n\nGuido van Geenen, vicepresidente de comunicaciones corporativas del proveedor de compartimentos superiores Diehl Aviation, compartió los dichos. Van Geenen le dijo a CNN Travel que si bien los casilleros están diseñados para acomodar &quot;bastante peso&quot;, eso no significa que sean un lugar seguro para los pasajeros.\n&quot;Subir y bajar de un compartimento superior también puede ser peligroso&quot;, añade van Geenen.\nPara entrar en un casillero, una persona tendría que subirse al respaldo del asiento del avión, que podría doblarse por el peso.\nVan Geenen también destaca el importante punto de que “los contenedores no tienen forma de abrirse desde adentro”, es decir, si estás dentro de un casillero y alguien lo cierra desde afuera, “tienes un problema”.\n&quot;En definitiva, no recomendamos utilizar los compartimentos superiores para la siesta&quot;, afirma van Geenen. &quot;Están diseñados para guardar de forma segura las maletas de los pasajeros, pero no para una siesta informal&quot;.\nLa perspectiva de los auxiliares de vuelo\nCualquiera que intente subir al compartimento de equipaje del avión podría provocarse lesiones a sí mismo o a otras personas. Crédito: Richard Sharrocks/Moment RF/Getty Images\nEl auxiliar de vuelo Major fue testigo de muchas cosas en sus 25 años de vuelo, pero en realidad nunca vio a un viajero dentro del contenedor de equipaje.\n&quot;Si viera a un pasajero intentando subir a un compartimento superior, me tomaría unos segundos para creer que eso era lo que estaba sucediendo frente a mí&quot;, dice.\nDicho esto, Major admite que ha &quot;visto fotografías de la tripulación en los compartimentos&quot; y sugiere que es el tipo de cosas que, aunque &quot;bastante mal vistas&quot;, suceden de vez en cuando cuando la tripulación tiene el avión para ellos solos antes de abordar.\nSi bien hubo un aumento reciente en los casos de pasajeros con comportamiento rebelde en los aviones, Major dice que si se encontrara con un viajero dentro del casillero, no asumiría automáticamente que estaba siendo deliberadamente perturbador.\nSu objetivo, ante todo, sería “simplemente sacarlos” y garantizar que estuvieran a salvo.\n\nLos pasajeros rebeldes ponen en riesgo la seguridad del vuelo, advierte la FAA\n\n&quot;Mi reacción dependería de por qué estaban allí&quot;, dice Major. “Los sacaría y luego averiguaría qué estaba pasando. Supongo que estaban bajo la influencia de algo o que estaban mentalmente enfermos”.\nSi un pasajero ve a otro dentro de un compartimento superior, Major aconseja que notifique a un miembro de la tripulación, en lugar de intervenir ellos mismos; este mismo consejo se aplica si los pasajeros presencian algún comportamiento adverso o inusual a bordo.\n&quot;Un pasajero podría crear, sin darse cuenta, un incidente que interrumpa la situación, porque podría crear un conflicto, mientras que la tripulación está entrenada para reducir la tensión&quot;, dice Major.\nMajor también disuade a los pasajeros de filmar y publicar sobre un incidente como este. Lo que podría parecer un momento viral divertido podría tener consecuencias negativas, dice Major, especialmente si la persona en el video ya es vulnerable.\nEl futuro de los compartimentos superiores\nSi bien el compartimento superior del avión está actualmente fuera del alcance de los pasajeros, algunas ideas por implementar para la cabina de avión imaginan esta área como un espacio para que los viajeros se estiren y se relajen en pleno vuelo.\nTomemos como ejemplo el concepto Cloud Capsule de Toyota Boshoku, que prevé el área sobre el asiento de clase economy como un espacio adicional para que los pasajeros descansen una vez que el avión alcance la altitud de crucero. En 2021, este diseño fue nominado al Crystal Cabin Award, un prestigioso premio de diseño aeronáutico.\nSi bien este concepto puede parecer futurista, la idea de que los pasajeros hagan uso del espacio de los casilleros superiores tiene algún precedente. Allá por la década de 1950, los viajeros que volaban con Pan American Airways a través del Atlántico en el Boeing 377 Stratocruiser podían dormir en los compartimentos superiores en pleno vuelo.\nMajor dice que los auxiliares de vuelo “siempre están atentos a los desarrollos futuros”, pero sugiere que la tripulación se concentra más en que los compartimentos superiores se hagan más grandes para acomodar más maletas, en lugar de adaptarse para acomodar a los pasajeros.\n\nOPINIÓN | ¿Por qué aumenta el número de pasajeros rebeldes en aviones?\n\n&quot;El equipaje de mano es uno de los mayores problemas a los que se enfrentan los auxiliares de vuelo&quot;, afirma Major. &quot;Causa problemas si no podemos sacar todas esas maletas o si no podemos lograr que los pasajeros guarden sus maletas o si llevan demasiadas cosas...&quot;\nEn la mayoría de los vuelos, el espacio de los armarios superiores es “escaso”, como dice Major. Los contenedores están tan llenos de bolsos y pertenencias de los viajeros, por lo que la idea de que una persona se meta allí también es ridícula.\nPero Major busca enfatizar que si bien la idea de que alguien suba al compartimiento superior puede “parecer divertida”, es importante recordar que la cabina de un avión es un entorno muy específico y que las restricciones de seguridad existen por una razón.\n&quot;Estás volando el cielo a 10.600 metros (35.000 pies), 800 o 900 kilómetros por hora (500 o 600 millas por hora)&quot;, dice. &quot;No quieres crear un problema a bordo del avión, no es el lugar para hacerlo&quot;.', 'https://cnnespanol.cnn.com/wp-content/uploads/2024/05/gettyimages-1499212870.webp', '2024-05-16', 2),
 (110, 'La reina Camila no sumará pieles nuevas a su guardarropa', 'https://cnnespanol.cnn.com/2024/05/15/reina-camila-no-sumara-pieles-nuevas-trax/', '(CNN) -- El Palacio de Buckingham le escribió a un grupo que lucha por los derechos de los animales para confirmar que la reina Camila ya no comprará ropa que incluya pieles de animales.\n\nLa carta enviada a People for the Ethical Treatment of Animals (PETA), a la que CNN tuvo acceso, decía que: “Su Majestad no adquirirá ninguna prenda de piel nueva”. Sin embargo, no está claro cuál es la posición de la Reina con respecto a los artículos de piel en su guardarropa actual.\nLa medida sigue una postura similar adoptada por su difunta suegra, la reina Isabel II, quien descartó comprar nuevos productos de piel en 2019.\nLa correspondencia del Palacio fue en respuesta a una carta enviada por PETA a la reina en abril. Allí, Elisa Allen, vicepresidenta de programas y operaciones de la organización en el Reino Unido, detalla las prácticas crueles que, según dice, se emplean en la industria de pieles, así como su impacto en el medio ambiente.\n\nVictoria Beckham prohíbe las pieles de animales en su línea de moda\n\nLa fundadora de la organización benéfica, Ingrid Newkirk, acogió con satisfacción la noticia. En una declaración enviada a CNN, dijo: “PETA brinda por la reina Camila con una copa del mejor clarete por ser una verdadera reina al apoyar al 95% de los británicos que también se niegan a usar pieles de animales, como muestran las encuestas&quot;.\nLa noticia de la decisión tomada por la reina Isabel II fue divulgada por su asistente principal, Angela Kelly. En su libro “The Other Side of the Coin: The Queen, the Dresser and the Wardrobe”, Kelly escribió: “Si Su Majestad debe asistir a un compromiso en un clima particularmente frío, a partir de 2019 se utilizarán pieles sintéticas para garantizar que ella se mantenga caliente”.\nPETA alienta a los propietarios a donar artículos existentes a su “programa de amnistía de pieles”, que los envía a “personas sin hogar, refugiados y personas en áreas devastadas por la guerra para ayudarlos a mantenerse calientes en los meses de invierno”. En su sitio web explica el motivo: &quot;No podemos recuperar a los animales que sufrieron por estos abrigos, pero podemos utilizar pieles viejas para ayudar a los humanos que las necesitan desesperadamente&quot;.', 'https://cnnespanol.cnn.com/wp-content/uploads/2024/05/gettyimages-1784344524.webp', '2024-05-16', 2);
 
-INSERT INTO `websites` (`id`, `name`, `url`, `icon`) VALUES
-(1, 'Diario de Yucatán', 'https://www.yucatan.com.mx/feed', 'https://newspack-yucatan.s3.amazonaws.com/uploads/2023/06/cropped-favicon-background-32x32.png');
-INSERT INTO `websites` (`id`, `name`, `url`, `icon`) VALUES
-(2, 'CNN', 'https://cnnespanol.cnn.com/feed', 'https://cnnespanol.cnn.com/wp-content/uploads/2017/01/logo-cnnee.png?w=32');
+INSERT INTO `websites` (`id`, `name`, `url`, `icon`, `updatedAt`) VALUES
+(1, 'Diario de Yucatán', 'https://www.yucatan.com.mx/feed', 'https://newspack-yucatan.s3.amazonaws.com/uploads/2023/06/cropped-favicon-background-32x32.png', '2024-05-18 04:32:33');
+INSERT INTO `websites` (`id`, `name`, `url`, `icon`, `updatedAt`) VALUES
+(2, 'CNN', 'https://cnnespanol.cnn.com/feed', 'https://cnnespanol.cnn.com/wp-content/uploads/2017/01/logo-cnnee.png?w=32', '2024-05-18 06:03:01');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

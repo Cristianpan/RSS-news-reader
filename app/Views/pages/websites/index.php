@@ -1,12 +1,17 @@
-<?php $this->extend('components/layout'); ?>
+<?php
 
-<?php $this->section('css') ?>
-<link rel="preload" href="/assets/css/websites.min.css" as="style">
-<link rel="stylesheet" href="/assets/css/websites.min.css">
+use App\Utils\UrlGenerator;
+
+$this->extend('components/layout');
+$this->section('css')
+?>
+
+<link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/websites.min.css") ?>" as="style">
+<link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/websites.min.css") ?>">
 <?php $this->endSection() ?>
 
 <?php $this->section('js') ?>
-<script src="/assets/js/websites.min.js"></script>
+<script src="<?= UrlGenerator::generateAssetUrl("/assets/js/websites.min.js") ?>"></script>
 <?php $this->endSection() ?>
 
 <?php $this->section('content') ?>
@@ -36,7 +41,7 @@
             <form class="website-delete" action="<?= url_to('websites-delete') ?>" method="post">
                 <input type="hidden" value="<?= $website['id'] ?>" hidden name="id">
                 <button title="Eliminar" type="submit" class="website__btn">
-                    <img src="/assets/images/delete-icon.svg" alt="icono de eliminar" width="38" height="38"> 
+                    <img src="/assets/images/delete-icon.svg" alt="icono de eliminar" width="38" height="38">
                 </button>
             </form>
         </div>

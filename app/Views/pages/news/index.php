@@ -1,15 +1,20 @@
-<?php $this->extend('components/layout') ?>
+<?php
 
-<?php $this->section('css') ?>
-<link rel="preload" href="/assets/css/home.min.css" as="style">
-<link rel="stylesheet" href="/assets/css/home.min.css">
-<link rel="preload" href="/assets/css/paginator.min.css" as="style">
-<link rel="stylesheet" href="/assets/css/paginator.min.css">
+use App\Utils\UrlGenerator;
+
+$this->extend('components/layout');
+$this->section('css')
+?>
+
+<link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/home.min.css") ?>" as="style">
+<link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/home.min.css") ?>">
+<link rel="preload" href="<?= UrlGenerator::generateAssetUrl("/assets/css/paginator.min.css") ?>" as="style">
+<link rel="stylesheet" href="<?= UrlGenerator::generateAssetUrl("/assets/css/paginator.min.css") ?>">
 <?php $this->endSection('css') ?>
 
 <?php $this->section('js') ?>
-<script src="/assets/js/home.min.js"></script>
-<script src="/assets/js/paginator.min.js"></script>
+<script src="<?= UrlGenerator::generateAssetUrl("/assets/js/home.min.js") ?>"></script>
+<script src="<?= UrlGenerator::generateAssetUrl("/assets/js/paginator.min.js") ?>"></script>
 <?php $this->endSection('js') ?>
 
 
@@ -45,7 +50,7 @@
 
             <article class="news-card">
                 <div class="news-card__image">
-                    <img src="<?= $new['image'] ? $new['image'] : '/assets/images/bg-none.svg' ?>" loading="lazy" width="300" height="200" alt="Imagen de la noticia<?= $new['title'] ?>">
+                    <img src="<?= $new['image'] ?>" loading="lazy" width="300" height="200" alt="Imagen de la noticia<?= $new['title'] ?>">
                 </div>
                 <div class="news-card__info-container">
                     <h1 class="news-card__title"><?= $new['title'] ?></h1>
