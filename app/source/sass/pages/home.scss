@@ -1,0 +1,137 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.home-title {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    &--no-results {
+        font-size: 2.4rem;
+        color: $dark-gray; 
+        text-align: center;
+    }
+}
+
+.news-action {
+    @include container;
+    margin: 0 auto 2rem auto;
+}
+
+.news-filter{
+    display: inline-block;
+    position: relative;
+    background-color: $light-gray;
+    border-radius: 0.5rem;
+
+    &__select{
+        padding: 0.5rem 2rem 0.5rem 0.5rem;
+        display: block;
+        appearance: none;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: $light-gray;
+        color: $gray;
+        font-size: 1.4rem;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline-color: rgba($blue, 0.75);
+        }
+    }
+
+    &__arrow{
+        position: absolute;
+        top: 1rem;
+        right: 0.6rem;
+        color: $gray;
+        pointer-events: none;
+        width: 1rem;
+    }
+}
+
+.cards-container {
+    margin: 0 auto 3rem auto;
+    @include container;
+    @include grid(1, 2rem);
+
+    @include tel {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include tablet() {
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    }
+}
+
+.news-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 1 / 0.75;
+        max-height: 20rem;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+    }
+
+    &__info-container {
+        width: 100%;
+        height: 50%;
+        padding: 1.5rem 1rem 3rem 1rem;
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 1.7rem;
+        @include clip-text(3); 
+    }
+
+    &__detail {
+        &--date {
+            font-size: 1.4rem;
+        }
+
+        &--description {
+            font-size: 1.4rem;
+            @include clip-text(4);
+        }
+
+        &--link {
+            font-size: 1.4rem;
+            margin: 1.5rem 1rem;
+            float: right;
+            color: $blue;
+            transition: color 0.3s, transform 0.1s;
+
+            &:hover {
+                transform: scale(1.05);
+                color: darken($blue, 20);
+            }
+        }
+    }
+
+    &__categories-container {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin: 0.5rem 0;
+        cursor: default;
+        @include clip-text(2); 
+    }
+
+    &__category {
+        color: $blue;
+        display: inline-block;
+        font-size: 1.1rem;
+    }
+}
